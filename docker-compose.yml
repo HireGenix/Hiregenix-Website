@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # PostgreSQL service
+  postgres:
+    image: postgres:latest
+    container_name: hiregenix-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: hiregenix
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - hiregenix-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-admin} -d hiregenix"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Next.js application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hiregenix-app
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-admin}:${POSTGRES_PASSWORD:-password}@postgres:5432/hiregenix?schema=public
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-your-nextauth-secret-key}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - hiregenix-network
+    command: >
+      sh -c "
+        echo 'Waiting for PostgreSQL to be ready...' &&
+        npx prisma migrate deploy &&
+        npx prisma db seed &&
+        node server.js
+      "
+
+  # pgAdmin (optional admin interface)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: hiregenix-pgadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@hiregenix.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-password}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - hiregenix-network
+
+volumes:
+  postgres_data:
+    name: hiregenix-postgres-data
+
+networks:
+  hiregenix-network:
+    name: hiregenix-network
+    driver: bridge
