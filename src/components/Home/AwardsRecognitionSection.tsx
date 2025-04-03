@@ -51,28 +51,28 @@ export const AwardsRecognitionSection: React.FC = () => {
       organization: 'HR Tech Awards',
       year: '2025',
       description: 'Recognized for innovation in AI-powered candidate matching and assessment technology.',
-      logo: 'https://hrexecutive.com/wp-content/uploads/2023/05/HR-Tech-Awards-Logo.png'
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Award_icon.svg/1200px-Award_icon.svg.png'
     },
     {
       title: 'Top 10 HR Technology Solutions',
       organization: 'Enterprise Technology Review',
       year: '2024',
       description: 'Named one of the top HR technology solutions transforming the recruitment landscape.',
-      logo: 'https://enterprisetechnologyreview.com/wp-content/themes/enterprisetechnologyreview/images/logo.png'
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Technology_logo.svg/1200px-Technology_logo.svg.png'
     },
     {
       title: 'Excellence in User Experience',
       organization: 'SaaS Breakthrough Awards',
       year: '2024',
       description: 'Awarded for exceptional user experience design in recruitment software.',
-      logo: 'https://saasbreakthroughawards.com/wp-content/uploads/2022/01/SaaS-Breakthrough-Awards-Logo.png'
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/UX_logo.svg/1200px-UX_logo.svg.png'
     },
     {
       title: 'Most Innovative AI Application',
       organization: 'AI Breakthrough Awards',
       year: '2024',
       description: 'Recognized for groundbreaking application of artificial intelligence in recruitment.',
-      logo: 'https://aibreakthroughawards.com/wp-content/uploads/2021/06/AI-Breakthrough-Awards-Logo.png'
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/AI_logo.svg/1200px-AI_logo.svg.png'
     }
   ];
 
@@ -81,7 +81,7 @@ export const AwardsRecognitionSection: React.FC = () => {
     {
       quote: 'HireGenix is revolutionizing how companies find and hire talent with its sophisticated AI matching algorithms.',
       source: 'Forbes',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Forbes_logo.svg/1200px-Forbes_logo.svg.png',
+      logo: 'https://1000logos.net/wp-content/uploads/2016/11/Forbes-Logo-640x400.png',
       link: 'https://www.forbes.com'
     },
     {
@@ -93,7 +93,7 @@ export const AwardsRecognitionSection: React.FC = () => {
     {
       quote: 'HireGenix stands out in the crowded HR tech space with its focus on both efficiency and candidate experience.',
       source: 'HR Executive',
-      logo: 'https://hrexecutive.com/wp-content/uploads/2018/06/HRE-Logo-2018.png',
+      logo: 'https://1000logos.net/wp-content/uploads/2020/09/HR-Logo-640x400.jpg',
       link: 'https://www.hrexecutive.com'
     }
   ];
