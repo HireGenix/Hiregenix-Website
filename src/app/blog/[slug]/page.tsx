@@ -451,9 +451,9 @@ export default function BlogPostPage() {
             </Box>
             
             {/* Post Content */}
-            <ContentContainer>
-              <ReactMarkdown>{post.content}</ReactMarkdown>
-            </ContentContainer>
+            <ContentContainer
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
 
             {/* Author Bio */}
             <Box 
