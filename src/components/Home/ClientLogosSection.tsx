@@ -43,16 +43,16 @@ export const ClientLogosSection: React.FC = () => {
   const clients = [
     { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg', tier: 'Enterprise' },
     { name: 'Google', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg', tier: 'Enterprise' },
-    { name: 'British Columbia College of Management', logo: 'https://www.bccm.ca/wp-content/uploads/2022/01/bccm-logo.png', tier: 'Enterprise' },
-    { name: 'XS Worldwide', logo: 'https://xsworldwide.com/wp-content/uploads/2023/05/xs-worldwide-logo.png', tier: 'Enterprise' },
     { name: 'Salesforce', logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg', tier: 'Enterprise' },
     { name: 'Adobe', logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/Adobe_Corporate_logo.svg', tier: 'Enterprise' },
-    { name: 'StartupFlux', logo: 'https://startupflux.com/wp-content/uploads/2021/03/startupflux-logo.svg', tier: 'Growth' },
-    { name: 'YouLegal', logo: 'https://youlegal.com.au/wp-content/uploads/2022/04/youlegal-logo.png', tier: 'Growth' },
+    { name: 'Amazon', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg', tier: 'Enterprise' },
+    { name: 'IBM', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg', tier: 'Enterprise' },
     { name: 'Slack', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Slack_Technologies_Logo.svg', tier: 'Growth' },
     { name: 'Uber', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/58/Uber_logo_2018.svg', tier: 'Growth' },
     { name: 'Netflix', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg', tier: 'Growth' },
-    { name: 'Shopify', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg', tier: 'Growth' }
+    { name: 'Shopify', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg', tier: 'Growth' },
+    { name: 'Spotify', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg', tier: 'Growth' },
+    { name: 'Airbnb', logo: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg', tier: 'Growth' }
   ];
 
   // Group clients by tier

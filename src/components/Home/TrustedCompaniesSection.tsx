@@ -15,12 +15,12 @@ import { motion } from 'framer-motion';
 
 // Trusted by companies data with official logo URLs
 const trustedCompanies = [
-  { name: 'British Columbia College of Management', logo: 'https://www.bccm.ca/wp-content/uploads/2022/01/bccm-logo.png', employees: '5,000+' },
-  { name: 'XS Worldwide', logo: 'https://xsworldwide.com/wp-content/uploads/2023/05/xs-worldwide-logo.png', employees: '2,500+' },
-  { name: 'StartupFlux', logo: 'https://startupflux.com/wp-content/uploads/2021/03/startupflux-logo.svg', employees: '1,000+' },
-  { name: 'YouLegal', logo: 'https://youlegal.com.au/wp-content/uploads/2022/04/youlegal-logo.png', employees: '3,200+' },
   { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg', employees: '8,000+' },
-  { name: 'Google', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg', employees: '1,500+' }
+  { name: 'Google', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg', employees: '1,500+' },
+  { name: 'Amazon', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg', employees: '5,000+' },
+  { name: 'IBM', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg', employees: '2,500+' },
+  { name: 'Salesforce', logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg', employees: '3,200+' },
+  { name: 'Adobe', logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/Adobe_Corporate_logo.svg', employees: '1,000+' }
 ];
 
 // Animation variants
