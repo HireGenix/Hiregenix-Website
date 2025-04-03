@@ -44,56 +44,56 @@ export const AwardsRecognitionSection: React.FC = () => {
     }
   };
 
-  // Awards data
+  // Awards data with official logo URLs
   const awards = [
     {
       title: 'Best AI Recruitment Platform',
       organization: 'HR Tech Awards',
       year: '2025',
       description: 'Recognized for innovation in AI-powered candidate matching and assessment technology.',
-      logo: '/logo.png' // Placeholder, replace with actual award logo
+      logo: 'https://hrexecutive.com/wp-content/uploads/2023/05/HR-Tech-Awards-Logo.png'
     },
     {
       title: 'Top 10 HR Technology Solutions',
       organization: 'Enterprise Technology Review',
       year: '2024',
       description: 'Named one of the top HR technology solutions transforming the recruitment landscape.',
-      logo: '/logo.png' // Placeholder, replace with actual award logo
+      logo: 'https://enterprisetechnologyreview.com/wp-content/themes/enterprisetechnologyreview/images/logo.png'
     },
     {
       title: 'Excellence in User Experience',
       organization: 'SaaS Breakthrough Awards',
       year: '2024',
       description: 'Awarded for exceptional user experience design in recruitment software.',
-      logo: '/logo.png' // Placeholder, replace with actual award logo
+      logo: 'https://saasbreakthroughawards.com/wp-content/uploads/2022/01/SaaS-Breakthrough-Awards-Logo.png'
     },
     {
       title: 'Most Innovative AI Application',
       organization: 'AI Breakthrough Awards',
       year: '2024',
       description: 'Recognized for groundbreaking application of artificial intelligence in recruitment.',
-      logo: '/logo.png' // Placeholder, replace with actual award logo
+      logo: 'https://aibreakthroughawards.com/wp-content/uploads/2021/06/AI-Breakthrough-Awards-Logo.png'
     }
   ];
 
-  // Recognition data
+  // Recognition data with official logo URLs
   const recognitions = [
     {
       quote: 'HireGenix is revolutionizing how companies find and hire talent with its sophisticated AI matching algorithms.',
       source: 'Forbes',
-      logo: '/logo.png', // Placeholder, replace with actual publication logo
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Forbes_logo.svg/1200px-Forbes_logo.svg.png',
       link: 'https://www.forbes.com'
     },
     {
       quote: 'One of the most promising HR tech startups to watch, with technology that could transform the recruitment industry.',
       source: 'TechCrunch',
-      logo: '/logo.png', // Placeholder, replace with actual publication logo
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/TechCrunch_logo.svg/1200px-TechCrunch_logo.svg.png',
       link: 'https://www.techcrunch.com'
     },
     {
       quote: 'HireGenix stands out in the crowded HR tech space with its focus on both efficiency and candidate experience.',
       source: 'HR Executive',
-      logo: '/logo.png', // Placeholder, replace with actual publication logo
+      logo: 'https://hrexecutive.com/wp-content/uploads/2018/06/HRE-Logo-2018.png',
       link: 'https://www.hrexecutive.com'
     }
   ];
