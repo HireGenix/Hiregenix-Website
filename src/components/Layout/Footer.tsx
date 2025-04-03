@@ -313,7 +313,7 @@ export default function Footer() {
             <Grid item xs={12} md={4}>
               <Box sx={{ mb: 3 }}>
                 <Image
-                  src="/Hiregenix-logo-black.png"
+                  src="/HireGenix-logo-black.png"
                   alt="HireGenix Logo"
                   width={180}
                   height={48}
