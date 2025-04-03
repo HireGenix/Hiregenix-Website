@@ -74,7 +74,7 @@ export const IntegrationSection: React.FC = () => {
     },
     { 
       name: 'Zoom', 
-      logo: 'https://st1.zoom.us/static/6.3.10815/image/new/home/zoom-logo.png', 
+      logo: 'https://download.logo.wine/logo/Zoom_Video_Communications/Zoom_Video_Communications-Logo.wine.png', 
       color: '#2D8CFF',
       description: 'Conduct video interviews directly through Zoom',
       features: ['One-click interviews', 'Recording capabilities', 'Automated scheduling'],
@@ -82,7 +82,7 @@ export const IntegrationSection: React.FC = () => {
     },
     { 
       name: 'LinkedIn', 
-      logo: 'https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg', 
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png', 
       color: '#0A66C2',
       description: 'Source candidates and post jobs directly to LinkedIn',
       features: ['Job posting', 'Candidate sourcing', 'Profile importing'],
@@ -90,7 +90,7 @@ export const IntegrationSection: React.FC = () => {
     },
     { 
       name: 'Workday', 
-      logo: 'https://www.workday.com/content/dam/web/en-us/images/logos/workday-logo-web.svg', 
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Workday_logo.png', 
       color: '#0875E1',
       description: 'Integrate with your Workday HRIS for seamless data flow',
       features: ['Employee data sync', 'Onboarding automation', 'HR workflow integration'],
