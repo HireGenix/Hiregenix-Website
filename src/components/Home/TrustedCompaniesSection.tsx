@@ -13,14 +13,14 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 
-// Trusted by companies data
+// Trusted by companies data with official logo URLs
 const trustedCompanies = [
-  { name: 'TechCorp', logo: '/companies/techcorp.svg', employees: '5,000+' },
-  { name: 'InnovateSoft', logo: '/companies/innovatesoft.svg', employees: '2,500+' },
-  { name: 'GlobalHR', logo: '/companies/globalhr.svg', employees: '1,000+' },
-  { name: 'TalentForce', logo: '/companies/talentforce.svg', employees: '3,200+' },
-  { name: 'FutureTech', logo: '/companies/futuretech.svg', employees: '8,000+' },
-  { name: 'RecruitPro', logo: '/companies/recruitpro.svg', employees: '1,500+' }
+  { name: 'British Columbia College of Management', logo: 'https://www.bccm.ca/wp-content/uploads/2022/01/bccm-logo.png', employees: '5,000+' },
+  { name: 'XS Worldwide', logo: 'https://xsworldwide.com/wp-content/uploads/2023/05/xs-worldwide-logo.png', employees: '2,500+' },
+  { name: 'StartupFlux', logo: 'https://startupflux.com/wp-content/uploads/2021/03/startupflux-logo.svg', employees: '1,000+' },
+  { name: 'YouLegal', logo: 'https://youlegal.com.au/wp-content/uploads/2022/04/youlegal-logo.png', employees: '3,200+' },
+  { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg', employees: '8,000+' },
+  { name: 'Google', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg', employees: '1,500+' }
 ];
 
 // Animation variants
