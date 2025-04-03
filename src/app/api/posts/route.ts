@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { mockPosts } from './mock-data';
 
+// This is a static API that doesn't rely on a database connection
+// It uses mock data to avoid database connection issues in production
 export async function GET(request: Request) {
   try {
     // Get query parameters
