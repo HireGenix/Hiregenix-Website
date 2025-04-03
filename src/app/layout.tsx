@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   description: 'HireGenix is a modern recruitment platform that leverages artificial intelligence to help companies find the best talent.',
   keywords: 'recruitment, hiring, AI, talent acquisition, HireGenix',
   icons: {
-    icon: '/Hiregenix-symbol.jpg',
-    apple: '/Hiregenix-symbol.jpg',
+    icon: '/HireGenix-Symbol.jpg',
+    apple: '/HireGenix-Symbol.jpg',
   },
 };
 

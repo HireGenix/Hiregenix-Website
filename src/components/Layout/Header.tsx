@@ -132,7 +132,7 @@ export default function Header() {
               <Link href="/" passHref style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
                   <Image
-                    src="/Hiregenix-logo-black.png"
+                    src="/HireGenix-logo-black.png"
                     alt="HireGenix Logo"
                     width={150}
                     height={40}
@@ -399,7 +399,7 @@ export default function Header() {
         >
           <Box sx={{ p: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Image
-              src="/Hiregenix-logo-black.png"
+              src="/HireGenix-logo-black.png"
               alt="HireGenix Logo"
               width={120}
               height={32}
