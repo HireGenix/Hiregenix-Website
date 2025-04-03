@@ -50,7 +50,7 @@ export const IntegrationSection: React.FC = () => {
   const integrations = [
     { 
       name: 'Slack', 
-      logo: '/integrations/slack-logo.svg', 
+      logo: 'https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png', 
       color: '#4A154B',
       description: 'Get notifications and updates directly in your Slack channels',
       features: ['Real-time notifications', 'Candidate updates', 'Team collaboration'],
@@ -58,7 +58,7 @@ export const IntegrationSection: React.FC = () => {
     },
     { 
       name: 'Microsoft Teams', 
-      logo: '/integrations/teams-logo.svg', 
+      logo: 'https://img.icons8.com/fluency/48/000000/microsoft-teams-2019.png', 
       color: '#6264A7',
       description: 'Seamlessly integrate with Microsoft Teams for better collaboration',
       features: ['Meeting scheduling', 'Document sharing', 'Interview coordination'],
@@ -66,7 +66,7 @@ export const IntegrationSection: React.FC = () => {
     },
     { 
       name: 'Google Workspace', 
-      logo: '/integrations/google-logo.svg', 
+      logo: 'https://workspace.google.com/static/img/products/png/drive.png?cache=1', 
       color: '#4285F4',
       description: 'Connect with Google Calendar, Gmail, and other Google services',
       features: ['Calendar sync', 'Email integration', 'Document management'],
@@ -74,7 +74,7 @@ export const IntegrationSection: React.FC = () => {
     },
     { 
       name: 'Zoom', 
-      logo: '/integrations/zoom-logo.svg', 
+      logo: 'https://st1.zoom.us/static/6.3.10815/image/new/home/zoom-logo.png', 
       color: '#2D8CFF',
       description: 'Conduct video interviews directly through Zoom',
       features: ['One-click interviews', 'Recording capabilities', 'Automated scheduling'],
@@ -82,7 +82,7 @@ export const IntegrationSection: React.FC = () => {
     },
     { 
       name: 'LinkedIn', 
-      logo: '/integrations/linkedin-logo.svg', 
+      logo: 'https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg', 
       color: '#0A66C2',
       description: 'Source candidates and post jobs directly to LinkedIn',
       features: ['Job posting', 'Candidate sourcing', 'Profile importing'],
@@ -90,7 +90,7 @@ export const IntegrationSection: React.FC = () => {
     },
     { 
       name: 'Workday', 
-      logo: '/integrations/workday-logo.svg', 
+      logo: 'https://www.workday.com/content/dam/web/en-us/images/logos/workday-logo-web.svg', 
       color: '#0875E1',
       description: 'Integrate with your Workday HRIS for seamless data flow',
       features: ['Employee data sync', 'Onboarding automation', 'HR workflow integration'],
