@@ -57,37 +57,37 @@ export const BlogResourcesSection: React.FC = () => {
       title: '5 Ways AI is Transforming the Recruitment Process',
       excerpt: 'Discover how artificial intelligence is revolutionizing how companies find and hire top talent, from automated screening to predictive analytics.',
       image: '/blog/5 Ways AI is Transforming the Recruitment Process.png',
-      category: 'AI Recruitment',
+      category: 'AI & Technology',
       date: 'Mar 15, 2025',
       author: {
-        name: 'Sarah Johnson',
+        name: 'HireGenix Admin',
         avatar: '/avatars/avatar1.jpg'
       },
-      slug: 'ai-transforming-recruitment'
+      slug: '5-ways-ai-is-transforming-the-recruitment-process'
     },
     {
       title: 'The Future of Skills Assessment: Beyond Traditional Testing',
       excerpt: 'Learn how modern skills assessment techniques are providing deeper insights into candidate capabilities than ever before.',
       image: '/blog/The Future of Skills Assessment: Beyond Traditional Testing.png',
-      category: 'Skills Assessment',
+      category: 'Tutorials',
       date: 'Mar 10, 2025',
       author: {
-        name: 'Michael Chen',
-        avatar: '/avatars/avatar2.jpg'
+        name: 'HireGenix Admin',
+        avatar: '/avatars/avatar1.jpg'
       },
-      slug: 'future-skills-assessment'
+      slug: 'the-future-of-skills-assessment-beyond-traditional-testing'
     },
     {
       title: 'Building Diverse Teams: How Technology Can Help',
       excerpt: 'Explore how recruitment technology can be leveraged to create more diverse and inclusive workplaces.',
       image: '/blog/Building Diverse Teams: How Technology Can Help.png',
       category: 'Diversity & Inclusion',
-      date: 'Mar 5, 2025',
+      date: 'Mar 22, 2025',
       author: {
-        name: 'Jessica Williams',
-        avatar: '/avatars/avatar3.jpg'
+        name: 'HireGenix Admin',
+        avatar: '/avatars/avatar1.jpg'
       },
-      slug: 'building-diverse-teams'
+      slug: 'building-diverse-teams-how-technology-can-help'
     }
   ];
 
