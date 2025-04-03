@@ -48,11 +48,11 @@ export const SuccessStoriesSection: React.FC = () => {
     }
   };
 
-  // Success stories data
+  // Success stories data with local logo files
   const successStories = [
     {
       company: 'BCCM',
-      logo: '/logo.png', // Placeholder, replace with actual company logo
+      logo: '/clients/bccm logo.png',
       industry: 'Hospitality',
       quote: 'HireGenix helped us reduce our time-to-hire by 45% and improved the quality of our candidates significantly. The AI matching technology is a game-changer.',
       stats: [
@@ -68,7 +68,7 @@ export const SuccessStoriesSection: React.FC = () => {
     },
     {
       company: 'XS Worldwide',
-      logo: '/logo.png', // Placeholder, replace with actual company logo
+      logo: '/clients/xs-nxt-light.webp',
       industry: 'Exhibition Industry',
       quote: 'The skills assessment feature has been invaluable for our specialized roles. We\'ve seen a 60% improvement in candidate retention after implementing HireGenix.',
       stats: [
@@ -84,7 +84,7 @@ export const SuccessStoriesSection: React.FC = () => {
     },
     {
       company: 'StartupFlux',
-      logo: '/logo.png', // Placeholder, replace with actual company logo
+      logo: '/clients/startupflux.svg',
       industry: 'Marketing and Communications',
       quote: 'As a rapidly growing company, we needed to scale our hiring process without sacrificing quality. HireGenix\'s platform allowed us to triple our hiring capacity with the same team.',
       stats: [
