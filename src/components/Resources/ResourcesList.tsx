@@ -29,6 +29,11 @@ import {
   Download as DownloadIcon,
   Bookmark as BookmarkIcon,
   BookmarkBorder as BookmarkBorderIcon,
+  MenuBook as MenuBookIcon,
+  Description as DescriptionIcon,
+  Article as ArticleIcon,
+  Checklist as ChecklistIcon,
+  Build as BuildIcon
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -295,16 +300,111 @@ export const ResourcesList: React.FC<ResourcesListProps> = ({
                           },
                         }}
                       >
-                        <CardMedia
-                          component="img"
+                        <Box
                           sx={{
                             width: { xs: '100%', sm: 200 },
                             height: { xs: 200, sm: 'auto' },
-                            objectFit: 'cover',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            background: `linear-gradient(135deg, ${alpha(getTypeColor(resource.type), 0.2)} 0%, ${alpha(getTypeColor(resource.type), 0.1)} 100%)`,
+                            position: 'relative',
+                            overflow: 'hidden'
                           }}
-                          image={resource.image}
-                          alt={resource.title}
-                        />
+                        >
+                          {/* Resource Type Icon */}
+                          <Box
+                            component={motion.div}
+                            whileHover={{ 
+                              scale: 1.05,
+                              rotate: [0, 5, 0, -5, 0],
+                              transition: { duration: 0.5 }
+                            }}
+                            sx={{
+                              width: 80,
+                              height: 80,
+                              borderRadius: '50%',
+                              background: alpha(getTypeColor(resource.type), 0.2),
+                              border: `2px solid ${alpha(getTypeColor(resource.type), 0.5)}`,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              zIndex: 2
+                            }}
+                          >
+                            {resource.type === 'E-Book' && (
+                              <MenuBookIcon sx={{ fontSize: 40, color: getTypeColor(resource.type) }} />
+                            )}
+                            {resource.type === 'Template' && (
+                              <DescriptionIcon sx={{ fontSize: 40, color: getTypeColor(resource.type) }} />
+                            )}
+                            {resource.type === 'Whitepaper' && (
+                              <ArticleIcon sx={{ fontSize: 40, color: getTypeColor(resource.type) }} />
+                            )}
+                            {resource.type === 'Checklist' && (
+                              <ChecklistIcon sx={{ fontSize: 40, color: getTypeColor(resource.type) }} />
+                            )}
+                            {resource.type === 'Guide' && (
+                              <MenuBookIcon sx={{ fontSize: 40, color: getTypeColor(resource.type) }} />
+                            )}
+                            {resource.type === 'Toolkit' && (
+                              <BuildIcon sx={{ fontSize: 40, color: getTypeColor(resource.type) }} />
+                            )}
+                          </Box>
+                          
+                          {/* Decorative elements */}
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              top: -20,
+                              right: -20,
+                              width: 100,
+                              height: 100,
+                              borderRadius: '50%',
+                              background: alpha(getTypeColor(resource.type), 0.1),
+                              zIndex: 1
+                            }}
+                          />
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              bottom: -30,
+                              left: -30,
+                              width: 120,
+                              height: 120,
+                              borderRadius: '50%',
+                              background: alpha(getTypeColor(resource.type), 0.15),
+                              zIndex: 1
+                            }}
+                          />
+                          
+                          {/* Animated dots */}
+                          {[...Array(5)].map((_, i) => (
+                            <Box
+                              key={i}
+                              component={motion.div}
+                              animate={{ 
+                                y: [0, -10, 0],
+                                opacity: [0.3, 0.8, 0.3]
+                              }}
+                              transition={{ 
+                                duration: 2 + i * 0.5,
+                                repeat: Infinity,
+                                repeatType: 'loop'
+                              }}
+                              sx={{
+                                position: 'absolute',
+                                width: 6 + i * 2,
+                                height: 6 + i * 2,
+                                borderRadius: '50%',
+                                background: getTypeColor(resource.type),
+                                top: 50 + (i * 20),
+                                left: 30 + (i * 30),
+                                zIndex: 1
+                              }}
+                            />
+                          ))}
+                        </Box>
                         <CardContent
                           sx={{
                             flex: '1 0 auto',
@@ -482,12 +582,110 @@ export const ResourcesList: React.FC<ResourcesListProps> = ({
                           },
                         }}
                       >
-                        <CardMedia
-                          component="img"
-                          height="180"
-                          image={resource.image}
-                          alt={resource.title}
-                        />
+                        <Box
+                          sx={{
+                            height: 180,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            background: `linear-gradient(135deg, ${alpha(getTypeColor(resource.type), 0.2)} 0%, ${alpha(getTypeColor(resource.type), 0.1)} 100%)`,
+                            position: 'relative',
+                            overflow: 'hidden'
+                          }}
+                        >
+                          {/* Resource Type Icon */}
+                          <Box
+                            component={motion.div}
+                            whileHover={{ 
+                              scale: 1.05,
+                              rotate: [0, 5, 0, -5, 0],
+                              transition: { duration: 0.5 }
+                            }}
+                            sx={{
+                              width: 70,
+                              height: 70,
+                              borderRadius: '50%',
+                              background: alpha(getTypeColor(resource.type), 0.2),
+                              border: `2px solid ${alpha(getTypeColor(resource.type), 0.5)}`,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              zIndex: 2
+                            }}
+                          >
+                            {resource.type === 'E-Book' && (
+                              <MenuBookIcon sx={{ fontSize: 35, color: getTypeColor(resource.type) }} />
+                            )}
+                            {resource.type === 'Template' && (
+                              <DescriptionIcon sx={{ fontSize: 35, color: getTypeColor(resource.type) }} />
+                            )}
+                            {resource.type === 'Whitepaper' && (
+                              <ArticleIcon sx={{ fontSize: 35, color: getTypeColor(resource.type) }} />
+                            )}
+                            {resource.type === 'Checklist' && (
+                              <ChecklistIcon sx={{ fontSize: 35, color: getTypeColor(resource.type) }} />
+                            )}
+                            {resource.type === 'Guide' && (
+                              <MenuBookIcon sx={{ fontSize: 35, color: getTypeColor(resource.type) }} />
+                            )}
+                            {resource.type === 'Toolkit' && (
+                              <BuildIcon sx={{ fontSize: 35, color: getTypeColor(resource.type) }} />
+                            )}
+                          </Box>
+                          
+                          {/* Decorative elements */}
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              top: -20,
+                              right: -20,
+                              width: 100,
+                              height: 100,
+                              borderRadius: '50%',
+                              background: alpha(getTypeColor(resource.type), 0.1),
+                              zIndex: 1
+                            }}
+                          />
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              bottom: -30,
+                              left: -30,
+                              width: 120,
+                              height: 120,
+                              borderRadius: '50%',
+                              background: alpha(getTypeColor(resource.type), 0.15),
+                              zIndex: 1
+                            }}
+                          />
+                          
+                          {/* Animated dots */}
+                          {[...Array(3)].map((_, i) => (
+                            <Box
+                              key={i}
+                              component={motion.div}
+                              animate={{ 
+                                y: [0, -10, 0],
+                                opacity: [0.3, 0.8, 0.3]
+                              }}
+                              transition={{ 
+                                duration: 2 + i * 0.5,
+                                repeat: Infinity,
+                                repeatType: 'loop'
+                              }}
+                              sx={{
+                                position: 'absolute',
+                                width: 5 + i * 2,
+                                height: 5 + i * 2,
+                                borderRadius: '50%',
+                                background: getTypeColor(resource.type),
+                                top: 50 + (i * 30),
+                                left: 30 + (i * 40),
+                                zIndex: 1
+                              }}
+                            />
+                          ))}
+                        </Box>
                         <CardContent
                           sx={{
                             p: 3,
