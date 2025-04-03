@@ -90,7 +90,7 @@ export const IntegrationSection: React.FC = () => {
     },
     { 
       name: 'Workday', 
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Workday_logo.png', 
+      logo: 'https://logos-world.net/wp-content/uploads/2021/02/Workday-Logo.png', 
       color: '#0875E1',
       description: 'Integrate with your Workday HRIS for seamless data flow',
       features: ['Employee data sync', 'Onboarding automation', 'HR workflow integration'],
