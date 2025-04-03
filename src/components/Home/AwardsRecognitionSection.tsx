@@ -76,12 +76,12 @@ export const AwardsRecognitionSection: React.FC = () => {
     }
   ];
 
-  // Recognition data with official logo URLs
+  // Recognition data with local logo files
   const recognitions = [
     {
       quote: 'HireGenix is revolutionizing how companies find and hire talent with its sophisticated AI matching algorithms.',
       source: 'Forbes',
-      logo: 'https://1000logos.net/wp-content/uploads/2016/11/Forbes-Logo-640x400.png',
+      logo: '/clients/png-transparent-forbes-logo-entrepreneurship-startup-company-church-candles-company-text-trademark.png',
       link: 'https://www.forbes.com'
     },
     {
@@ -93,7 +93,7 @@ export const AwardsRecognitionSection: React.FC = () => {
     {
       quote: 'HireGenix stands out in the crowded HR tech space with its focus on both efficiency and candidate experience.',
       source: 'HR Executive',
-      logo: 'https://1000logos.net/wp-content/uploads/2020/09/HR-Logo-640x400.jpg',
+      logo: '/clients/human-resource-executive-top-hr-products-human-resource.png',
       link: 'https://www.hrexecutive.com'
     }
   ];
