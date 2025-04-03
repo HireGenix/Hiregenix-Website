@@ -24,13 +24,13 @@ export const mockPosts = [
       
       <p>As AI technology continues to evolve, its impact on recruitment will only grow stronger. Companies that embrace these innovations now will gain a significant competitive advantage in attracting and retaining top talent.</p>
     `,
-    createdAt: '2023-09-15T10:30:00Z',
-    updatedAt: '2023-09-15T10:30:00Z',
+    createdAt: '2025-03-15T10:30:00Z',
+    updatedAt: '2025-03-15T10:30:00Z',
     author: {
-      id: 'author1',
-      name: 'Sarah Johnson',
-      email: 'sarah.johnson@hiregenix.com',
-      image: '/team/sarah-johnson.jpg'
+      id: 'admin',
+      name: 'HireGenix Admin',
+      email: 'admin@myhiregenix.com',
+      image: '/avatars/avatar1.jpg'
     },
     category: {
       id: 'cat1',
@@ -83,13 +83,13 @@ export const mockPosts = [
       
       <p>By leveraging these technological solutions, companies can make significant strides in building more diverse and inclusive teams. However, it's important to remember that technology is just one piece of the puzzle. True diversity and inclusion require a comprehensive approach that includes leadership commitment, cultural change, and ongoing education.</p>
     `,
-    createdAt: '2023-08-22T14:45:00Z',
-    updatedAt: '2023-08-22T14:45:00Z',
+    createdAt: '2025-03-22T14:45:00Z',
+    updatedAt: '2025-03-22T14:45:00Z',
     author: {
-      id: 'author2',
-      name: 'Michael Chen',
-      email: 'michael.chen@hiregenix.com',
-      image: '/team/michael-chen.jpg'
+      id: 'admin',
+      name: 'HireGenix Admin',
+      email: 'admin@myhiregenix.com',
+      image: '/avatars/avatar1.jpg'
     },
     category: {
       id: 'cat2',
@@ -142,13 +142,13 @@ export const mockPosts = [
       
       <p>As these innovative assessment techniques continue to evolve, they promise to create more meritocratic hiring processes that identify the best candidates regardless of background. However, it's crucial that these new methods are implemented thoughtfully, with careful attention to potential biases and privacy concerns.</p>
     `,
-    createdAt: '2023-07-10T09:15:00Z',
-    updatedAt: '2023-07-10T09:15:00Z',
+    createdAt: '2025-03-10T09:15:00Z',
+    updatedAt: '2025-03-10T09:15:00Z',
     author: {
-      id: 'author3',
-      name: 'Jessica Williams',
-      email: 'jessica.williams@hiregenix.com',
-      image: '/team/jessica-williams.jpg'
+      id: 'admin',
+      name: 'HireGenix Admin',
+      email: 'admin@myhiregenix.com',
+      image: '/avatars/avatar1.jpg'
     },
     category: {
       id: 'cat3',
