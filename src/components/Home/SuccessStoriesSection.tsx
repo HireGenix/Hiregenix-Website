@@ -222,9 +222,10 @@ export const SuccessStoriesSection: React.FC = () => {
                           src={story.logo}
                           alt={story.company}
                           sx={{
-                            width: 36,
-                            height: 36,
-                            objectFit: 'contain'
+                            width: 48,
+                            height: 48,
+                            objectFit: 'contain',
+                            display: 'block'
                           }}
                         />
                       </Box>

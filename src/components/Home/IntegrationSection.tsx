@@ -217,9 +217,10 @@ export const IntegrationSection: React.FC = () => {
                             src={integration.logo}
                             alt={integration.name}
                             sx={{
-                              width: 36,
-                              height: 36,
-                              objectFit: 'contain'
+                            width: 48,
+                            height: 48,
+                            objectFit: 'contain',
+                            display: 'block'
                             }}
                           />
                         </Box>
