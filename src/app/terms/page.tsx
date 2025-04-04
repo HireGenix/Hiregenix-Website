@@ -27,7 +27,7 @@ export default function TermsPage() {
           title: "Terms and Conditions | HireGenix",
           description: "Terms and conditions for using HireGenix recruitment platform services. Read our legal terms before using our AI-powered recruitment solutions.",
           keywords: "HireGenix terms, recruitment platform terms, AI recruitment legal terms",
-          ogUrl: "/terms"
+          canonicalUrl: "/terms"
         }} 
       />
       

@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
           title: "Privacy Policy | HireGenix",
           description: "HireGenix privacy policy explains how we collect, use, and protect your personal information when using our AI-powered recruitment platform.",
           keywords: "HireGenix privacy, recruitment data privacy, AI recruitment privacy policy",
-          ogUrl: "/privacy"
+          canonicalUrl: "/privacy"
         }} 
       />
       

@@ -26,7 +26,7 @@ export default function RefundPolicyPage() {
           title: "Returns and Refund Policy | HireGenix",
           description: "HireGenix returns and refund policy for our AI-powered recruitment platform services. Learn about our refund terms and conditions.",
           keywords: "HireGenix refund, recruitment platform refund policy, AI recruitment returns",
-          ogUrl: "/refund-policy"
+          canonicalUrl: "/refund-policy"
         }} 
       />
       
