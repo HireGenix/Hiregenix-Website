@@ -119,6 +119,7 @@ export default function Header() {
             transition: 'all 0.3s ease',
             borderBottom: scrolled ? '1px solid rgba(0, 0, 0, 0.05)' : 'none',
             boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.08)' : 'none',
+            borderRadius: 0, // Ensure square corners
           }}
         >
           <Container maxWidth="lg">
