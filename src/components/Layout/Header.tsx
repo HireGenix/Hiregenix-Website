@@ -115,7 +115,7 @@ export default function Header() {
           color="default" 
           elevation={scrolled ? 4 : 0}
           sx={{
-            backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+            backgroundColor: scrolled ? theme.palette.background.paper : 'transparent',
             backdropFilter: scrolled ? 'blur(20px)' : 'none',
             transition: 'all 0.3s ease',
             borderBottom: scrolled ? '1px solid rgba(0, 0, 0, 0.05)' : 'none',
