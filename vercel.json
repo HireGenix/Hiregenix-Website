@@ -8,6 +8,7 @@
   "regions": ["iad1"],
   "env": {
     "NEXTAUTH_URL": "https://hiregenix-website.vercel.app",
+    "NEXTAUTH_SECRET": "7jRyJca64BdeNw8OWqT7tTqiJCl7aguZEeKj48LVi9M=",
     "SMTP_HOST": "smtp-relay.brevo.com",
     "SMTP_PORT": "587",
     "SMTP_SECURE": "false",
