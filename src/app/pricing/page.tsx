@@ -208,12 +208,17 @@ export default function PricingPage() {
         <Box
           sx={{
             position: 'relative',
-            py: { xs: 10, md: 16 },
-            background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
-            color: 'white',
+            minHeight: { xs: 'auto', md: '100vh' },
+            display: 'flex',
+            alignItems: 'center',
             overflow: 'hidden',
+            background: `linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%)`,
+            color: 'white',
+            pt: { xs: 12, md: 0 },
+            pb: { xs: 10, md: 0 }
           }}
         >
+          {/* Geometric pattern overlay */}
           <Box
             sx={{
               position: 'absolute',
@@ -221,11 +226,58 @@ export default function PricingPage() {
               left: 0,
               right: 0,
               bottom: 0,
-              opacity: 0.1,
+              opacity: 0.05,
               backgroundImage: 'url(/hero-pattern.svg)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              zIndex: 1
+            }}
+          />
+
+          {/* Animated gradient orbs */}
+          <Box
+            component={motion.div}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.2 }}
+            transition={{ duration: 1.5 }}
+            sx={{
+              position: 'absolute',
+              top: '10%',
+              right: '5%',
+              width: { xs: 200, md: 400 },
+              height: { xs: 200, md: 400 },
+              borderRadius: '50%',
+              background: `radial-gradient(circle, ${theme.palette.primary.main}80 0%, rgba(0,0,0,0) 70%)`,
+              filter: 'blur(80px)',
               zIndex: 1,
+              animation: 'pulse 8s ease-in-out infinite',
+              '@keyframes pulse': {
+                '0%, 100%': { transform: 'scale(1)', opacity: 0.2 },
+                '50%': { transform: 'scale(1.1)', opacity: 0.3 }
+              }
+            }}
+          />
+
+          <Box
+            component={motion.div}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.15 }}
+            transition={{ duration: 1.5, delay: 0.3 }}
+            sx={{
+              position: 'absolute',
+              bottom: '10%',
+              left: '5%',
+              width: { xs: 150, md: 300 },
+              height: { xs: 150, md: 300 },
+              borderRadius: '50%',
+              background: `radial-gradient(circle, ${theme.palette.secondary.main}80 0%, rgba(0,0,0,0) 70%)`,
+              filter: 'blur(80px)',
+              zIndex: 1,
+              animation: 'pulse2 10s ease-in-out infinite',
+              '@keyframes pulse2': {
+                '0%, 100%': { transform: 'scale(1)', opacity: 0.15 },
+                '50%': { transform: 'scale(1.15)', opacity: 0.25 }
+              }
             }}
           />
           
@@ -238,34 +290,31 @@ export default function PricingPage() {
               >
                 <Chip 
                   label="PRICING" 
-                  color="secondary" 
-                  size="small"
                   sx={{ 
                     mb: 3, 
-                    fontWeight: 600,
-                    background: 'rgba(33, 150, 243, 0.2)',
-                    border: '1px solid rgba(33, 150, 243, 0.3)',
-                    color: 'white',
+                    py: 2,
                     px: 2,
-                    py: 2.5,
-                    '& .MuiChip-label': {
-                      px: 1,
-                    }
+                    borderRadius: '50px',
+                    background: `linear-gradient(90deg, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`,
+                    color: 'white',
+                    fontWeight: 700,
+                    fontSize: '0.75rem',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
                   }} 
                 />
                 <Typography
                   variant="h1"
                   component="h1"
                   sx={{
-                    fontWeight: 800,
                     fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
+                    fontWeight: 800,
                     mb: 2,
-                    background: 'linear-gradient(90deg, #ffffff 0%, #f0f0ff 100%)',
+                    background: `linear-gradient(90deg, #FFFFFF 0%, ${theme.palette.primary.light} 100%)`,
                     backgroundClip: 'text',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
-                    textShadow: '0 2px 10px rgba(0,0,0,0.1)',
-                    lineHeight: 1.2,
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.02em'
                   }}
                 >
                   Simple, Transparent Pricing
@@ -283,9 +332,10 @@ export default function PricingPage() {
                     fontSize: { xs: '1.25rem', md: '1.5rem' },
                     fontWeight: 400,
                     mb: 4,
-                    opacity: 0.9,
+                    color: 'rgba(255, 255, 255, 0.8)',
                     maxWidth: 600,
-                    mx: 'auto'
+                    mx: 'auto',
+                    lineHeight: 1.6
                   }}
                 >
                   Choose the plan that fits your recruitment needs. All plans include our core AI-powered features.

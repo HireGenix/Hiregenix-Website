@@ -33,7 +33,7 @@ const caseStudies = [
   {
     id: 'bccm',
     company: 'BCCM',
-    logo: '/logo.png', // Placeholder, replace with actual company logo
+    logo: '/clients/bccm logo.png',
     industry: 'Hospitality',
     headline: 'Revolutionizing Hospitality Hiring with AI-Powered Recruitment',
     summary: 'How BCCM reduced time-to-hire by 45% and improved candidate quality using HireGenix\'s AI matching technology.',
@@ -66,7 +66,7 @@ const caseStudies = [
     {
       id: 'xs-worldwide',
       company: 'XS Worldwide',
-      logo: '/logo.png', // Placeholder, replace with actual company logo
+      logo: '/clients/xs-nxt-light.webp',
       industry: 'Exhibition Industry',
       headline: 'Transforming Exhibition Industry Recruitment with Specialized Skills Assessment',
     summary: 'XS Worldwide achieved 60% improvement in candidate retention after implementing HireGenix\'s specialized skills assessment.',
@@ -99,7 +99,7 @@ const caseStudies = [
   {
     id: 'startupflux',
     company: 'StartupFlux',
-    logo: '/logo.png', // Placeholder, replace with actual company logo
+    logo: '/clients/startupflux.svg',
     industry: 'Marketing and Communications',
     headline: 'Scaling Recruitment Operations for Rapid Growth',
     summary: 'How StartupFlux tripled their hiring capacity while maintaining quality during a period of rapid expansion.',
@@ -132,7 +132,7 @@ const caseStudies = [
   {
     id: 'youlegal',
     company: 'YouLegal',
-    logo: '/logo.png', // Placeholder, replace with actual company logo
+    logo: '/clients/FB836_YouLegal_Final.png',
     industry: 'Medical Legal (Australia)',
     headline: 'Streamlining Specialized Legal Hiring',
     summary: 'YouLegal reduced hiring time by 65% while improving employee retention in the medical legal sector.',
