@@ -13,7 +13,10 @@
     "SMTP_SECURE": "false",
     "SMTP_USER": "8706e0001@smtp-brevo.com",
     "SMTP_PASSWORD": "J3XD6Rk1TdKFP78b",
-    "EMAIL_FROM": "HireGenix <noreply@myhiregenix.com>"
+    "EMAIL_FROM": "HireGenix <noreply@myhiregenix.com>",
+    "REDIS_HOST": "localhost",
+    "REDIS_PORT": "6379",
+    "REDIS_PASSWORD": ""
   },
   "headers": [
     {
