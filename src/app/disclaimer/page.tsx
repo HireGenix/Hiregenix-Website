@@ -26,7 +26,7 @@ export default function DisclaimerPage() {
           title: "Disclaimer | HireGenix",
           description: "HireGenix disclaimer regarding the use of our AI-powered recruitment platform and services. Read our legal disclaimers before using our services.",
           keywords: "HireGenix disclaimer, recruitment platform disclaimer, AI recruitment legal disclaimer",
-          ogUrl: "/disclaimer"
+          canonicalUrl: "/disclaimer"
         }} 
       />
       
