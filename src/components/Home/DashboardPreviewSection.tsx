@@ -31,7 +31,7 @@ import { DashboardPreview, InterviewAnalysisPreview, SkillsAssessmentPreview } f
 // Tab content data
 const tabData = [
   {
-    id: 'dashboard',
+    id: 'workforce-analytics',
     label: 'Recruitment Dashboard',
     icon: <DashboardIcon />,
     description: "Get a bird's-eye view of your entire recruitment process with real-time analytics, candidate tracking, and pipeline management.",
@@ -44,7 +44,7 @@ const tabData = [
     component: DashboardPreview
   },
   {
-    id: 'interview',
+    id: 'video-interviews',
     label: 'AI Interview Analysis',
     icon: <VideoCallIcon />,
     description: "Conduct and analyze video interviews with AI-powered insights on candidate sentiment, engagement, and communication skills.",
@@ -57,7 +57,7 @@ const tabData = [
     component: InterviewAnalysisPreview
   },
   {
-    id: 'assessment',
+    id: 'skills-assessment',
     label: 'Skills Assessment',
     icon: <AssessmentIcon />,
     description: "Create customized assessments to evaluate technical and soft skills with precision and eliminate bias in the evaluation process.",

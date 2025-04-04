@@ -576,7 +576,7 @@ export const AITechnologyExplainerSection: React.FC = () => {
                 color="primary"
                 endIcon={<ArrowForwardIcon />}
                 component={Link}
-                href="/technology"
+                href="/about"
                 sx={{
                   py: 1.5,
                   px: 3,
