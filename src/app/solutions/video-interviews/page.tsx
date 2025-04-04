@@ -21,186 +21,18 @@ import {
   Avatar
 } from '@mui/material';
 import {
-  VideoCall as VideoCallIcon,
   CheckCircle as CheckCircleIcon,
-  Psychology as PsychologyIcon,
-  RecordVoiceOver as RecordVoiceOverIcon,
-  Face as FaceIcon,
-  Speed as SpeedIcon,
-  ArrowForward as ArrowForwardIcon,
-  Visibility as VisibilityIcon,
-  Mic as MicIcon,
-  Videocam as VideocamIcon,
-  Translate as TranslateIcon,
-  CloudUpload as CloudUploadIcon,
-  Schedule as ScheduleIcon,
-  Devices as DevicesIcon,
-  Security as SecurityIcon,
-  Equalizer as EqualizerIcon
+  ArrowForward as ArrowForwardIcon
 } from '@mui/icons-material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Layout } from '@/components/Layout';
 import { SEOMetadata } from '@/components/SEO';
-
-// Animation variants
-const fadeInUpVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.4, 0, 0.2, 1]
-    }
-  }
-};
-
-const fadeInLeftVariant = {
-  hidden: { opacity: 0, x: -50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.4, 0, 0.2, 1]
-    }
-  }
-};
-
-const fadeInRightVariant = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.4, 0, 0.2, 1]
-    }
-  }
-};
-
-// Benefits data
-const benefits = [
-  {
-    title: 'Eliminate Geographical Barriers',
-    description: 'Interview candidates from anywhere in the world without the need for travel or physical presence.',
-    icon: <DevicesIcon fontSize="large" />
-  },
-  {
-    title: 'Reduce Time-to-Hire',
-    description: 'Schedule and conduct interviews faster with automated coordination and flexible timing options.',
-    icon: <SpeedIcon fontSize="large" />
-  },
-  {
-    title: 'Objective Candidate Evaluation',
-    description: 'Use AI analysis to ensure consistent, bias-free assessment of all candidates.',
-    icon: <EqualizerIcon fontSize="large" />
-  },
-  {
-    title: 'Enhanced Collaboration',
-    description: 'Allow multiple team members to participate in and review interviews asynchronously.',
-    icon: <ScheduleIcon fontSize="large" />
-  }
-];
-
-// Features data
-const features = [
-  {
-    title: 'Real-time Sentiment Analysis',
-    description: 'Our AI analyzes candidate responses in real-time, detecting emotional cues, engagement levels, and confidence to provide deeper insights into candidate suitability.',
-    icon: <VisibilityIcon />,
-    details: [
-      'Emotional response tracking during technical questions',
-      'Engagement level monitoring throughout the interview',
-      'Confidence assessment during challenging scenarios',
-      'Stress response analysis for high-pressure roles'
-    ]
-  },
-  {
-    title: 'Speech Pattern Analysis',
-    description: 'Advanced voice analysis examines speech patterns, clarity, pace, and vocabulary usage to evaluate communication skills and language proficiency.',
-    icon: <MicIcon />,
-    details: [
-      'Communication clarity and articulation assessment',
-      'Speaking pace and rhythm analysis',
-      'Filler word detection and quantification',
-      'Technical vocabulary usage evaluation'
-    ]
-  },
-  {
-    title: 'Behavioral Assessment',
-    description: 'Comprehensive analysis of facial expressions, body language, and response patterns to evaluate soft skills and cultural fit.',
-    icon: <FaceIcon />,
-    details: [
-      'Facial expression analysis during different question types',
-      'Eye contact and engagement tracking',
-      'Response consistency evaluation across similar questions',
-      'Non-verbal communication assessment'
-    ]
-  },
-  {
-    title: 'Technical Skills Verification',
-    description: 'Integrated coding challenges and technical assessments with AI-powered analysis to verify claimed skills and problem-solving abilities.',
-    icon: <PsychologyIcon />,
-    details: [
-      'Live coding challenge integration',
-      'Problem-solving approach analysis',
-      'Technical accuracy verification',
-      'Coding style and best practices assessment'
-    ]
-  }
-];
-
-// Technical details
-const technicalDetails = [
-  {
-    title: 'WebRTC Technology',
-    description: 'Enterprise-grade video conferencing with low latency and high-quality audio/video.',
-    icon: <VideocamIcon />
-  },
-  {
-    title: 'Cloud Recording',
-    description: 'Secure cloud storage of interview recordings with easy sharing and review capabilities.',
-    icon: <CloudUploadIcon />
-  },
-  {
-    title: 'AI-Powered Translation',
-    description: 'Real-time translation and transcription in 30+ languages for global recruitment.',
-    icon: <TranslateIcon />
-  },
-  {
-    title: 'Enterprise Security',
-    description: 'End-to-end encryption and compliance with global data protection regulations.',
-    icon: <SecurityIcon />
-  }
-];
-
-// Testimonials
-const testimonials = [
-  {
-    quote: "HireGenix's video interview platform has completely transformed our technical hiring process. The AI analysis helps us identify top candidates more accurately than traditional interviews.",
-    name: "Sarah Johnson",
-    position: "CTO, TechCorp",
-    avatar: "/avatars/avatar1.jpg"
-  },
-  {
-    quote: "The sentiment analysis feature has been a game-changer for our sales team recruitment. We can now objectively assess communication skills and emotional intelligence.",
-    name: "Michael Chen",
-    position: "VP of Sales, InnovateSoft",
-    avatar: "/avatars/avatar2.jpg"
-  }
-];
+import { HeroSection, benefits, features, technicalDetails, testimonials, seoData, fadeInUpVariant } from './components';
 
 export default function VideoInterviewsPage() {
   const theme = useTheme();
-
-  const seoData = {
-    title: 'AI-Powered Video Interview Platform | HireGenix',
-    description: 'HireGenix\'s comprehensive video interview platform with AI-powered analysis helps you make better hiring decisions through advanced candidate assessment.',
-    keywords: 'video interviews, AI interview analysis, remote interviewing, sentiment analysis, speech pattern analysis'
-  };
 
   return (
     <Layout>
@@ -208,178 +40,7 @@ export default function VideoInterviewsPage() {
 
       <Box component="main">
         {/* Hero Section */}
-        <Box
-          sx={{
-            position: 'relative',
-            py: { xs: 10, md: 16 },
-            background: `linear-gradient(135deg, ${theme.palette.secondary.main} 0%, ${theme.palette.secondary.dark} 100%)`,
-            color: 'white',
-            overflow: 'hidden'
-          }}
-        >
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              opacity: 0.1,
-              backgroundImage: 'url(/hero-pattern.svg)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              zIndex: 1
-            }}
-          />
-
-          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
-            <Grid container spacing={6} alignItems="center">
-              <Grid
-                item
-                xs={12}
-                md={6}
-                component={motion.div}
-                variants={fadeInLeftVariant}
-                initial="hidden"
-                animate="visible"
-              >
-                <Chip
-                  label="VIDEO INTERVIEW PLATFORM"
-                  color="primary"
-                  size="small"
-                  sx={{
-                    mb: 3,
-                    fontWeight: 600,
-                    background: 'rgba(255, 255, 255, 0.2)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    color: 'white',
-                    px: 2,
-                    py: 2.5,
-                    '& .MuiChip-label': {
-                      px: 1
-                    }
-                  }}
-                />
-                <Typography
-                  variant="h1"
-                  component="h1"
-                  sx={{
-                    fontWeight: 800,
-                    fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
-                    mb: 2,
-                    background: 'linear-gradient(90deg, #ffffff 0%, #f0f0ff 100%)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    textShadow: '0 2px 10px rgba(0,0,0,0.1)',
-                    lineHeight: 1.2
-                  }}
-                >
-                  AI-Powered Video Interviews
-                </Typography>
-                <Typography
-                  variant="h2"
-                  component="p"
-                  sx={{
-                    fontSize: { xs: '1.25rem', md: '1.5rem' },
-                    fontWeight: 400,
-                    mb: 4,
-                    opacity: 0.9,
-                    maxWidth: 600
-                  }}
-                >
-                  Conduct seamless video interviews with candidates from anywhere in the world with AI-powered analysis to help you make better hiring decisions.
-                </Typography>
-
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 4 }}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    component={Link}
-                    href="/demo"
-                    sx={{
-                      py: 1.5,
-                      px: 3,
-                      fontSize: '1rem',
-                      boxShadow: '0 4px 14px rgba(255, 255, 255, 0.2)',
-                      borderRadius: '50px',
-                      fontWeight: 600
-                    }}
-                  >
-                    Request Demo
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="inherit"
-                    size="large"
-                    component={Link}
-                    href="/contact"
-                    sx={{
-                      py: 1.5,
-                      px: 3,
-                      fontSize: '1rem',
-                      borderColor: 'rgba(255, 255, 255, 0.5)',
-                      borderRadius: '50px',
-                      fontWeight: 600,
-                      '&:hover': {
-                        borderColor: 'white',
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
-                      }
-                    }}
-                  >
-                    Contact Sales
-                  </Button>
-                </Box>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={6}
-                sx={{
-                  display: { xs: 'none', md: 'block' }
-                }}
-                component={motion.div}
-                variants={fadeInRightVariant}
-                initial="hidden"
-                animate="visible"
-              >
-                <Box
-                  sx={{
-                    position: 'relative',
-                    width: '100%',
-                    height: '400px'
-                  }}
-                >
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      width: '90%',
-                      height: 400,
-                      borderRadius: '30px',
-                      background: 'rgba(255, 255, 255, 0.1)',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      overflow: 'hidden'
-                    }}
-                  >
-                    <Image
-                      src="/solutions/video-interviews.jpg"
-                      alt="Video Interview Platform"
-                      width={350}
-                      height={350}
-                      style={{ objectFit: 'contain', zIndex: 1 }}
-                    />
-                  </Box>
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
+        <HeroSection />
 
         {/* Benefits Section */}
         <Box
@@ -581,20 +242,367 @@ export default function VideoInterviewsPage() {
                   <Grid item xs={12} md={6}>
                     <Paper
                       sx={{
-                        p: 0,
+                        p: 4,
                         overflow: 'hidden',
                         borderRadius: 4,
                         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
                         height: 300,
-                        position: 'relative'
+                        position: 'relative',
+                        background: `linear-gradient(135deg, ${alpha(theme.palette.secondary.light, 0.1)} 0%, ${alpha(theme.palette.secondary.main, 0.2)} 100%)`,
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
                       }}
                     >
-                      <Image
-                        src={`/solutions/feature-${index + 5}.jpg`}
-                        alt={feature.title}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                      />
+                      {index === 0 && (
+                        // Sentiment Analysis Visualization
+                        <Box sx={{ height: '100%', position: 'relative' }}>
+                          <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
+                            Sentiment Analysis
+                          </Typography>
+                          
+                          <Box
+                            component={motion.div}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            sx={{ mb: 3 }}
+                          >
+                            {[
+                              { emotion: 'Confidence', value: 85, color: theme.palette.success.main },
+                              { emotion: 'Enthusiasm', value: 72, color: theme.palette.info.main },
+                              { emotion: 'Engagement', value: 90, color: theme.palette.secondary.main },
+                              { emotion: 'Clarity', value: 78, color: theme.palette.primary.main },
+                            ].map((item, idx) => (
+                              <Box key={idx} sx={{ mb: 1.5 }}>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
+                                  <Typography variant="caption" fontWeight={600}>
+                                    {item.emotion}
+                                  </Typography>
+                                  <Typography variant="caption" fontWeight={600} color={item.color}>
+                                    {item.value}%
+                                  </Typography>
+                                </Box>
+                                <Box sx={{ width: '100%', height: 8, background: alpha(item.color, 0.2), borderRadius: 4 }}>
+                                  <Box
+                                    component={motion.div}
+                                    initial={{ width: 0 }}
+                                    animate={{ width: `${item.value}%` }}
+                                    transition={{ duration: 1, delay: 0.3 + idx * 0.1 }}
+                                    sx={{
+                                      height: '100%',
+                                      background: item.color,
+                                      borderRadius: 4,
+                                    }}
+                                  />
+                                </Box>
+                              </Box>
+                            ))}
+                          </Box>
+                          
+                          <Box
+                            component={motion.div}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.8 }}
+                            sx={{ 
+                              display: 'flex', 
+                              alignItems: 'center', 
+                              justifyContent: 'center',
+                              gap: 1,
+                            }}
+                          >
+                            <Chip 
+                              label="Positive Sentiment" 
+                              size="small" 
+                              sx={{ 
+                                background: alpha(theme.palette.success.main, 0.1),
+                                color: theme.palette.success.main,
+                                fontWeight: 600,
+                                fontSize: '0.7rem'
+                              }} 
+                            />
+                            <Chip 
+                              label="High Match" 
+                              size="small" 
+                              sx={{ 
+                                background: alpha(theme.palette.secondary.main, 0.1),
+                                color: theme.palette.secondary.main,
+                                fontWeight: 600,
+                                fontSize: '0.7rem'
+                              }} 
+                            />
+                          </Box>
+                        </Box>
+                      )}
+                      
+                      {index === 1 && (
+                        // Speech Analysis Visualization
+                        <Box sx={{ height: '100%', position: 'relative' }}>
+                          <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
+                            Speech Pattern Analysis
+                          </Typography>
+                          
+                          <Box
+                            sx={{
+                              height: 'calc(100% - 60px)',
+                              position: 'relative',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            {/* Audio Waveform Visualization */}
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.2 }}
+                              sx={{ 
+                                height: 80, 
+                                width: '100%', 
+                                display: 'flex', 
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                mb: 3,
+                              }}
+                            >
+                              {Array.from({ length: 40 }).map((_, idx) => {
+                                const height = Math.sin(idx * 0.5) * 30 + Math.random() * 20 + 10;
+                                return (
+                                  <Box
+                                    key={idx}
+                                    component={motion.div}
+                                    initial={{ height: 0 }}
+                                    animate={{ height }}
+                                    transition={{ 
+                                      duration: 0.5, 
+                                      delay: 0.3 + idx * 0.02,
+                                      repeat: Infinity,
+                                      repeatType: 'reverse',
+                                      repeatDelay: Math.random() * 2
+                                    }}
+                                    sx={{
+                                      width: 3,
+                                      background: theme.palette.secondary.main,
+                                      borderRadius: 4,
+                                      opacity: 0.7,
+                                    }}
+                                  />
+                                );
+                              })}
+                            </Box>
+                            
+                            {/* Speech Metrics */}
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.8 }}
+                              sx={{ 
+                                display: 'flex', 
+                                justifyContent: 'space-between',
+                                mb: 2,
+                              }}
+                            >
+                              {[
+                                { label: 'Pace', value: '95 wpm' },
+                                { label: 'Clarity', value: '92%' },
+                                { label: 'Filler Words', value: '2%' },
+                                { label: 'Pauses', value: 'Natural' },
+                              ].map((metric, idx) => (
+                                <Box key={idx} sx={{ textAlign: 'center' }}>
+                                  <Typography variant="caption" color="text.secondary">
+                                    {metric.label}
+                                  </Typography>
+                                  <Typography variant="body2" fontWeight={600} color={theme.palette.secondary.main}>
+                                    {metric.value}
+                                  </Typography>
+                                </Box>
+                              ))}
+                            </Box>
+                            
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 1 }}
+                              sx={{ 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'center',
+                              }}
+                            >
+                              <Chip 
+                                label="Excellent Communication Skills" 
+                                size="small" 
+                                sx={{ 
+                                  background: alpha(theme.palette.secondary.main, 0.1),
+                                  color: theme.palette.secondary.main,
+                                  fontWeight: 600,
+                                  fontSize: '0.7rem'
+                                }} 
+                              />
+                            </Box>
+                          </Box>
+                        </Box>
+                      )}
+                      
+                      {index === 2 && (
+                        // Facial Expression Analysis
+                        <Box sx={{ height: '100%', position: 'relative' }}>
+                          <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
+                            Facial Expression Analysis
+                          </Typography>
+                          
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'column',
+                              height: 'calc(100% - 60px)',
+                            }}
+                          >
+                            {/* Face Detection Frame */}
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.2 }}
+                              sx={{ 
+                                position: 'relative',
+                                height: 120,
+                                width: 120,
+                                mx: 'auto',
+                                mb: 3,
+                              }}
+                            >
+                              <Box
+                                component={motion.div}
+                                animate={{ 
+                                  border: [
+                                    `2px solid ${alpha(theme.palette.secondary.main, 0.3)}`,
+                                    `2px solid ${alpha(theme.palette.secondary.main, 0.8)}`,
+                                    `2px solid ${alpha(theme.palette.secondary.main, 0.3)}`
+                                  ]
+                                }}
+                                transition={{ 
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  repeatType: 'loop'
+                                }}
+                                sx={{
+                                  position: 'absolute',
+                                  top: 0,
+                                  left: 0,
+                                  right: 0,
+                                  bottom: 0,
+                                  borderRadius: '50%',
+                                }}
+                              />
+                              
+                              <Box
+                                component={motion.div}
+                                animate={{ 
+                                  rotate: 360
+                                }}
+                                transition={{ 
+                                  duration: 8,
+                                  repeat: Infinity,
+                                  ease: "linear"
+                                }}
+                                sx={{
+                                  position: 'absolute',
+                                  top: -5,
+                                  left: -5,
+                                  right: -5,
+                                  bottom: -5,
+                                  borderRadius: '50%',
+                                  border: `1px dashed ${alpha(theme.palette.secondary.main, 0.4)}`,
+                                }}
+                              />
+                              
+                              <Box
+                                sx={{
+                                  position: 'absolute',
+                                  top: 10,
+                                  left: 10,
+                                  right: 10,
+                                  bottom: 10,
+                                  borderRadius: '50%',
+                                  background: alpha(theme.palette.secondary.main, 0.1),
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  fontSize: 40,
+                                  color: theme.palette.secondary.main,
+                                }}
+                              >
+                                😊
+                              </Box>
+                              
+                              {/* Tracking Points */}
+                              {[
+                                { top: '30%', left: '30%' },
+                                { top: '30%', left: '70%' },
+                                { top: '50%', left: '50%' },
+                                { top: '70%', left: '40%' },
+                                { top: '70%', left: '60%' },
+                              ].map((pos, idx) => (
+                                <Box
+                                  key={idx}
+                                  component={motion.div}
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 0.5 + idx * 0.1 }}
+                                  sx={{
+                                    position: 'absolute',
+                                    top: pos.top,
+                                    left: pos.left,
+                                    width: 4,
+                                    height: 4,
+                                    borderRadius: '50%',
+                                    background: theme.palette.secondary.main,
+                                    boxShadow: `0 0 5px ${theme.palette.secondary.main}`,
+                                  }}
+                                />
+                              ))}
+                            </Box>
+                            
+                            {/* Expression Analysis */}
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.8 }}
+                              sx={{ 
+                                display: 'flex', 
+                                justifyContent: 'center',
+                                flexWrap: 'wrap',
+                                gap: 1,
+                                mb: 2,
+                              }}
+                            >
+                              {[
+                                { label: 'Smile', value: '95%', color: theme.palette.success.main },
+                                { label: 'Engagement', value: '90%', color: theme.palette.secondary.main },
+                                { label: 'Eye Contact', value: '85%', color: theme.palette.info.main },
+                                { label: 'Confidence', value: '88%', color: theme.palette.primary.main },
+                              ].map((metric, idx) => (
+                                <Chip 
+                                  key={idx}
+                                  label={`${metric.label}: ${metric.value}`}
+                                  size="small" 
+                                  sx={{ 
+                                    background: alpha(metric.color, 0.1),
+                                    color: metric.color,
+                                    fontWeight: 600,
+                                    fontSize: '0.7rem'
+                                  }} 
+                                />
+                              ))}
+                            </Box>
+                          </Box>
+                        </Box>
+                      )}
                     </Paper>
                   </Grid>
                 </Grid>

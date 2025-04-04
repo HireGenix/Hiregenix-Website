@@ -43,6 +43,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Layout } from '@/components/Layout';
 import { SEOMetadata } from '@/components/SEO';
+import { HeroSection, seoData } from './components';
 
 // Animation variants
 const fadeInUpVariant = {
@@ -192,11 +193,7 @@ const statistics = [
 export default function SkillsAssessmentPage() {
   const theme = useTheme();
 
-  const seoData = {
-    title: 'Skills Assessment Platform | HireGenix',
-    description: 'HireGenix\'s integrated skills assessment platform helps you evaluate candidates with customizable assessments that measure technical skills, knowledge, and cultural fit.',
-    keywords: 'skills assessment, technical evaluation, coding challenges, soft skills assessment, candidate testing'
-  };
+  // Using imported seoData from components
 
   return (
     <Layout>
@@ -204,393 +201,7 @@ export default function SkillsAssessmentPage() {
 
       <Box component="main">
         {/* Hero Section */}
-        <Box
-          sx={{
-            position: 'relative',
-            py: { xs: 10, md: 16 },
-            background: `linear-gradient(135deg, ${theme.palette.warning.main} 0%, ${theme.palette.warning.dark} 100%)`,
-            color: 'white',
-            overflow: 'hidden'
-          }}
-        >
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              opacity: 0.1,
-              backgroundImage: 'url(/hero-pattern.svg)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              zIndex: 1
-            }}
-          />
-
-          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
-            <Grid container spacing={6} alignItems="center">
-              <Grid
-                item
-                xs={12}
-                md={6}
-                component={motion.div}
-                variants={fadeInLeftVariant}
-                initial="hidden"
-                animate="visible"
-              >
-                <Chip
-                  label="SKILLS ASSESSMENT PLATFORM"
-                  color="primary"
-                  size="small"
-                  sx={{
-                    mb: 3,
-                    fontWeight: 600,
-                    background: 'rgba(255, 255, 255, 0.2)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    color: 'white',
-                    px: 2,
-                    py: 2.5,
-                    '& .MuiChip-label': {
-                      px: 1
-                    }
-                  }}
-                />
-                <Typography
-                  variant="h1"
-                  component="h1"
-                  sx={{
-                    fontWeight: 800,
-                    fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
-                    mb: 2,
-                    background: 'linear-gradient(90deg, #ffffff 0%, #f0f0ff 100%)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    textShadow: '0 2px 10px rgba(0,0,0,0.1)',
-                    lineHeight: 1.2
-                  }}
-                >
-                  Comprehensive Skills Assessment
-                </Typography>
-                <Typography
-                  variant="h2"
-                  component="p"
-                  sx={{
-                    fontSize: { xs: '1.25rem', md: '1.5rem' },
-                    fontWeight: 400,
-                    mb: 4,
-                    opacity: 0.9,
-                    maxWidth: 600
-                  }}
-                >
-                  Evaluate candidates with customizable assessments that measure technical skills, knowledge, and cultural fit with unprecedented accuracy.
-                </Typography>
-
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 4 }}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    component={Link}
-                    href="/demo"
-                    sx={{
-                      py: 1.5,
-                      px: 3,
-                      fontSize: '1rem',
-                      boxShadow: '0 4px 14px rgba(255, 255, 255, 0.2)',
-                      borderRadius: '50px',
-                      fontWeight: 600
-                    }}
-                  >
-                    Request Demo
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="inherit"
-                    size="large"
-                    component={Link}
-                    href="/contact"
-                    sx={{
-                      py: 1.5,
-                      px: 3,
-                      fontSize: '1rem',
-                      borderColor: 'rgba(255, 255, 255, 0.5)',
-                      borderRadius: '50px',
-                      fontWeight: 600,
-                      '&:hover': {
-                        borderColor: 'white',
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
-                      }
-                    }}
-                  >
-                    Contact Sales
-                  </Button>
-                </Box>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={6}
-                sx={{
-                  display: { xs: 'none', md: 'block' }
-                }}
-                component={motion.div}
-                variants={fadeInRightVariant}
-                initial="hidden"
-                animate="visible"
-              >
-                <Box
-                  sx={{
-                    position: 'relative',
-                    width: '100%',
-                    height: '400px'
-                  }}
-                >
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      width: '90%',
-                      height: 400,
-                      borderRadius: '30px',
-                      background: 'rgba(255, 255, 255, 0.1)',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-                      overflow: 'hidden'
-                    }}
-                  >
-                    {/* Interactive Assessment Demo */}
-                    <Box
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        position: 'relative',
-                        background: '#1E1E1E',
-                        color: 'white'
-                      }}
-                    >
-                      {/* Header */}
-                      <Box
-                        sx={{
-                          p: 2,
-                          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-                          background: `linear-gradient(135deg, ${theme.palette.warning.dark}, ${theme.palette.warning.main})`,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                        }}
-                      >
-                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                          <Box
-                            component={motion.div}
-                            animate={{ 
-                              rotate: [0, 5, 0, -5, 0],
-                            }}
-                            transition={{ 
-                              duration: 4,
-                              repeat: Infinity,
-                              repeatType: 'loop'
-                            }}
-                            sx={{
-                              width: 36,
-                              height: 36,
-                              borderRadius: '8px',
-                              background: 'rgba(255, 255, 255, 0.2)',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              mr: 2,
-                              fontWeight: 700
-                            }}
-                          >
-                            <AssessmentIcon fontSize="small" />
-                          </Box>
-                          <Typography variant="h6" fontWeight={600}>
-                            Skills Assessment
-                          </Typography>
-                        </Box>
-                        <Chip 
-                          label="Live Demo" 
-                          size="small"
-                          sx={{ 
-                            bgcolor: 'rgba(255, 255, 255, 0.2)',
-                            color: 'white',
-                            fontWeight: 600
-                          }} 
-                        />
-                      </Box>
-                      
-                      {/* Assessment Content */}
-                      <Box sx={{ p: 3 }}>
-                        <Box
-                          component={motion.div}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.2, duration: 0.5 }}
-                          sx={{ 
-                            mb: 3,
-                            p: 3,
-                            borderRadius: 2,
-                            background: `linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)`,
-                            border: '1px solid rgba(255, 255, 255, 0.05)',
-                          }}
-                        >
-                          <Typography variant="subtitle1" fontWeight={600} color="white" gutterBottom>
-                            Frontend Developer Assessment
-                          </Typography>
-                          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                            <Typography variant="body2" color="rgba(255, 255, 255, 0.7)">
-                              Candidate: Sarah Williams
-                            </Typography>
-                            <Box
-                              component={motion.div}
-                              animate={{ 
-                                scale: [1, 1.05, 1],
-                              }}
-                              transition={{ 
-                                duration: 2,
-                                repeat: Infinity,
-                                repeatType: 'loop'
-                              }}
-                            >
-                              <Typography variant="body2" color={theme.palette.warning.main} fontWeight={600}>
-                                In Progress
-                              </Typography>
-                            </Box>
-                          </Box>
-                          <Box
-                            component={motion.div}
-                            initial={{ width: '0%' }}
-                            animate={{ width: '65%' }}
-                            transition={{ duration: 1.5 }}
-                            sx={{
-                              height: 4,
-                              background: `linear-gradient(90deg, ${theme.palette.warning.main}, ${alpha(theme.palette.warning.main, 0.3)})`,
-                              borderRadius: 2,
-                              mb: 1
-                            }}
-                          />
-                          <Typography variant="caption" color="rgba(255, 255, 255, 0.6)">
-                            13 of 20 questions completed
-                          </Typography>
-                        </Box>
-                        
-                        {/* Current Question */}
-                        <Box
-                          component={motion.div}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.4, duration: 0.5 }}
-                          sx={{ mb: 3 }}
-                        >
-                          <Typography variant="body1" fontWeight={600} color="white" gutterBottom>
-                            Question 14: React Hooks
-                          </Typography>
-                          <Typography variant="body2" color="rgba(255, 255, 255, 0.8)" sx={{ mb: 2 }}>
-                            Which hook would you use to perform side effects in a function component?
-                          </Typography>
-                          
-                          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-                            {[
-                              { option: 'useState', selected: false },
-                              { option: 'useEffect', selected: true },
-                              { option: 'useContext', selected: false },
-                              { option: 'useReducer', selected: false }
-                            ].map((answer, idx) => (
-                              <Box
-                                key={idx}
-                                component={motion.div}
-                                whileHover={{ x: 5, transition: { duration: 0.2 } }}
-                                sx={{
-                                  p: 2,
-                                  borderRadius: 2,
-                                  background: answer.selected ? alpha(theme.palette.warning.main, 0.15) : 'rgba(255, 255, 255, 0.05)',
-                                  border: `1px solid ${answer.selected ? alpha(theme.palette.warning.main, 0.3) : 'rgba(255, 255, 255, 0.1)'}`,
-                                  cursor: 'pointer',
-                                  display: 'flex',
-                                  alignItems: 'center'
-                                }}
-                              >
-                                <Box
-                                  sx={{
-                                    width: 24,
-                                    height: 24,
-                                    borderRadius: '50%',
-                                    border: `2px solid ${answer.selected ? theme.palette.warning.main : 'rgba(255, 255, 255, 0.3)'}`,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    mr: 2
-                                  }}
-                                >
-                                  {answer.selected && (
-                                    <Box
-                                      component={motion.div}
-                                      initial={{ scale: 0 }}
-                                      animate={{ scale: 1 }}
-                                      sx={{
-                                        width: 12,
-                                        height: 12,
-                                        borderRadius: '50%',
-                                        background: theme.palette.warning.main
-                                      }}
-                                    />
-                                  )}
-                                </Box>
-                                <Typography variant="body2" color={answer.selected ? theme.palette.warning.main : 'white'} fontWeight={answer.selected ? 600 : 400}>
-                                  {answer.option}
-                                </Typography>
-                              </Box>
-                            ))}
-                          </Box>
-                        </Box>
-                        
-                        {/* Navigation */}
-                        <Box
-                          component={motion.div}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.6, duration: 0.5 }}
-                          sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            mt: 3
-                          }}
-                        >
-                          <Button
-                            variant="outlined"
-                            size="small"
-                            sx={{
-                              borderColor: 'rgba(255, 255, 255, 0.3)',
-                              color: 'white',
-                              borderRadius: 2,
-                              px: 2
-                            }}
-                          >
-                            Previous
-                          </Button>
-                          <Button
-                            variant="contained"
-                            color="warning"
-                            size="small"
-                            sx={{
-                              borderRadius: 2,
-                              px: 2,
-                              fontWeight: 600
-                            }}
-                          >
-                            Next Question
-                          </Button>
-                        </Box>
-                      </Box>
-                    </Box>
-                  </Box>
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
+        <HeroSection />
 
         {/* Statistics Section */}
         <Box
@@ -850,20 +461,466 @@ export default function SkillsAssessmentPage() {
                   <Grid item xs={12} md={6}>
                     <Paper
                       sx={{
-                        p: 0,
+                        p: 4,
                         overflow: 'hidden',
                         borderRadius: 4,
                         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
                         height: 300,
-                        position: 'relative'
+                        position: 'relative',
+                        background: `linear-gradient(135deg, ${alpha(theme.palette.warning.light, 0.1)} 0%, ${alpha(theme.palette.warning.main, 0.2)} 100%)`,
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
                       }}
                     >
-                      <Image
-                        src={`/solutions/feature-${index + 9}.jpg`}
-                        alt={feature.title}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                      />
+                      {index === 0 && (
+                        // Adaptive Testing Technology visualization
+                        <Box sx={{ height: '100%', position: 'relative' }}>
+                          <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
+                            Adaptive Difficulty Adjustment
+                          </Typography>
+                          
+                          {/* Difficulty level visualization */}
+                          <Box sx={{ mb: 3 }}>
+                            {[
+                              { level: 'Expert', width: '70%', color: theme.palette.error.main },
+                              { level: 'Advanced', width: '85%', color: theme.palette.warning.main },
+                              { level: 'Intermediate', width: '100%', color: theme.palette.success.main },
+                              { level: 'Beginner', width: '60%', color: theme.palette.info.main },
+                            ].map((item, idx) => (
+                              <Box key={idx} sx={{ mb: 1.5 }}>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
+                                  <Typography variant="caption" fontWeight={600}>
+                                    {item.level}
+                                  </Typography>
+                                  <Typography variant="caption" color="text.secondary">
+                                    {idx === 2 ? 'Current Level' : ''}
+                                  </Typography>
+                                </Box>
+                                <Box
+                                  component={motion.div}
+                                  initial={{ width: 0 }}
+                                  animate={{ width: item.width }}
+                                  transition={{ duration: 1, delay: idx * 0.2 }}
+                                  sx={{
+                                    height: 8,
+                                    borderRadius: 4,
+                                    background: item.color,
+                                    opacity: idx === 2 ? 1 : 0.6,
+                                    position: 'relative',
+                                  }}
+                                />
+                              </Box>
+                            ))}
+                          </Box>
+                          
+                          {/* Animated assessment path */}
+                          <Box
+                            component={motion.div}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 1 }}
+                            sx={{ position: 'absolute', bottom: 0, width: '100%' }}
+                          >
+                            <Typography variant="subtitle2" sx={{ mb: 1 }}>
+                              Personalized Assessment Path
+                            </Typography>
+                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                              {[1, 2, 3, 4, 5].map((step) => (
+                                <Box
+                                  key={step}
+                                  component={motion.div}
+                                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                                  sx={{
+                                    width: 40,
+                                    height: 40,
+                                    borderRadius: '50%',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    background: step === 3 
+                                      ? theme.palette.warning.main 
+                                      : alpha(theme.palette.warning.main, 0.2),
+                                    color: step === 3 ? 'white' : theme.palette.warning.main,
+                                    fontWeight: 'bold',
+                                    position: 'relative',
+                                    zIndex: 2,
+                                  }}
+                                >
+                                  {step}
+                                </Box>
+                              ))}
+                            </Box>
+                            <Box
+                              sx={{
+                                height: 2,
+                                background: alpha(theme.palette.warning.main, 0.3),
+                                width: '100%',
+                                position: 'absolute',
+                                bottom: 20,
+                                left: 0,
+                                zIndex: 1,
+                              }}
+                            />
+                          </Box>
+                        </Box>
+                      )}
+                      
+                      {index === 1 && (
+                        // Coding Challenges visualization
+                        <Box sx={{ height: '100%', position: 'relative' }}>
+                          <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
+                            Live Code Editor
+                          </Typography>
+                          
+                          <Box
+                            sx={{
+                              background: '#1e1e1e',
+                              borderRadius: 2,
+                              p: 2,
+                              fontFamily: 'monospace',
+                              fontSize: '0.85rem',
+                              color: '#d4d4d4',
+                              height: 'calc(100% - 60px)',
+                              overflow: 'hidden',
+                              position: 'relative',
+                            }}
+                          >
+                            <Box component="pre" sx={{ m: 0 }}>
+                              <Box component={motion.span} 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.2 }}
+                                sx={{ color: '#569cd6' }}
+                              >
+                                function
+                              </Box>
+                              <Box component={motion.span} 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                                sx={{ color: '#dcdcaa' }}
+                              > findMaxSubarraySum</Box>
+                              <Box component={motion.span} 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.4 }}
+                              >(nums, k) {'{'}</Box>
+                              
+                              <Box component="div">
+                                <Box component={motion.span} 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 0.6 }}
+                                  sx={{ color: '#569cd6' }}
+                                >  let</Box>
+                                <Box component={motion.span} 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 0.7 }}
+                                > maxSum = 0;</Box>
+                              </Box>
+                              
+                              <Box component="div">
+                                <Box component={motion.span} 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 0.9 }}
+                                  sx={{ color: '#569cd6' }}
+                                >  let</Box>
+                                <Box component={motion.span} 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 1.0 }}
+                                > windowSum = 0;</Box>
+                              </Box>
+                              
+                              <Box component="div">
+                                <Box component={motion.span} 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 1.2 }}
+                                  sx={{ color: '#c586c0' }}
+                                >  for</Box>
+                                <Box component={motion.span} 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 1.3 }}
+                                > (</Box>
+                                <Box component={motion.span} 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 1.4 }}
+                                  sx={{ color: '#569cd6' }}
+                                >let</Box>
+                                <Box component={motion.span} 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 1.5 }}
+                                > i = 0; i {'<'} k; i++) {'{'}</Box>
+                              </Box>
+                              
+                              <Box component="div">
+                                <Box component={motion.span} 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 1.7 }}
+                                >    windowSum += nums[i];</Box>
+                              </Box>
+                              
+                              <Box component="div">
+                                <Box component={motion.span} 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 1.9 }}
+                                >  {'}'}</Box>
+                              </Box>
+                              
+                              <Box component="div">
+                                <Box component={motion.span} 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 2.1 }}
+                                >  maxSum = windowSum;</Box>
+                              </Box>
+                              
+                              <Box component={motion.div}
+                                animate={{ 
+                                  opacity: [1, 0, 1],
+                                  transition: { 
+                                    repeat: Infinity,
+                                    duration: 1
+                                  }
+                                }}
+                                sx={{ 
+                                  width: 8, 
+                                  height: 16, 
+                                  background: '#fff', 
+                                  display: 'inline-block',
+                                  ml: 1,
+                                  verticalAlign: 'middle'
+                                }}
+                              />
+                            </Box>
+                            
+                            <Box
+                              sx={{
+                                position: 'absolute',
+                                bottom: 10,
+                                right: 10,
+                                display: 'flex',
+                                gap: 1,
+                              }}
+                            >
+                              <Chip 
+                                label="JavaScript" 
+                                size="small" 
+                                sx={{ 
+                                  background: alpha(theme.palette.warning.main, 0.2),
+                                  color: theme.palette.warning.main,
+                                  fontWeight: 600,
+                                  fontSize: '0.7rem'
+                                }} 
+                              />
+                              <Chip 
+                                label="Algorithms" 
+                                size="small" 
+                                sx={{ 
+                                  background: alpha(theme.palette.info.main, 0.2),
+                                  color: theme.palette.info.main,
+                                  fontWeight: 600,
+                                  fontSize: '0.7rem'
+                                }} 
+                              />
+                            </Box>
+                          </Box>
+                        </Box>
+                      )}
+                      
+                      {index === 2 && (
+                        // Soft Skills Simulations visualization
+                        <Box sx={{ height: '100%', position: 'relative' }}>
+                          <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
+                            Scenario-Based Assessment
+                          </Typography>
+                          
+                          <Box
+                            sx={{
+                              background: alpha(theme.palette.background.paper, 0.6),
+                              borderRadius: 2,
+                              p: 2,
+                              height: 'calc(100% - 60px)',
+                              overflow: 'hidden',
+                            }}
+                          >
+                            <Typography variant="body2" fontWeight={600} sx={{ mb: 2 }}>
+                              Workplace Scenario:
+                            </Typography>
+                            
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.3 }}
+                            >
+                              <Typography variant="body2" sx={{ mb: 2 }}>
+                                Your team is facing a tight deadline. A colleague suggests cutting corners on quality assurance to meet it. How do you respond?
+                              </Typography>
+                            </Box>
+                            
+                            <Box sx={{ mt: 3 }}>
+                              {[
+                                "Agree to cut QA to meet the deadline",
+                                "Suggest working overtime instead",
+                                "Propose prioritizing critical features",
+                                "Recommend discussing with stakeholders"
+                              ].map((option, idx) => (
+                                <Box
+                                  key={idx}
+                                  component={motion.div}
+                                  initial={{ opacity: 0, x: -20 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: 0.5 + idx * 0.2 }}
+                                  sx={{
+                                    p: 1.5,
+                                    mb: 1.5,
+                                    borderRadius: 2,
+                                    border: `1px solid ${idx === 2 ? theme.palette.success.main : alpha(theme.palette.divider, 0.5)}`,
+                                    background: idx === 2 ? alpha(theme.palette.success.main, 0.1) : 'transparent',
+                                    cursor: 'pointer',
+                                    '&:hover': {
+                                      background: idx !== 2 ? alpha(theme.palette.action.hover, 0.1) : alpha(theme.palette.success.main, 0.15),
+                                    }
+                                  }}
+                                >
+                                  <Typography variant="body2">
+                                    {option}
+                                  </Typography>
+                                </Box>
+                              ))}
+                            </Box>
+                          </Box>
+                          
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              bottom: 10,
+                              right: 10,
+                              display: 'flex',
+                              gap: 1,
+                            }}
+                          >
+                            <Chip 
+                              label="Problem Solving" 
+                              size="small" 
+                              sx={{ 
+                                background: alpha(theme.palette.success.main, 0.2),
+                                color: theme.palette.success.main,
+                                fontWeight: 600,
+                                fontSize: '0.7rem'
+                              }} 
+                            />
+                          </Box>
+                        </Box>
+                      )}
+                      
+                      {index === 3 && (
+                        // Industry-Specific Assessments visualization
+                        <Box sx={{ height: '100%', position: 'relative' }}>
+                          <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
+                            Role-Specific Assessment Library
+                          </Typography>
+                          
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexWrap: 'wrap',
+                              gap: 1.5,
+                              height: 'calc(100% - 60px)',
+                            }}
+                          >
+                            {[
+                              { name: "Frontend Development", color: theme.palette.primary.main, progress: 85 },
+                              { name: "Data Science", color: theme.palette.secondary.main, progress: 70 },
+                              { name: "UX Design", color: theme.palette.success.main, progress: 90 },
+                              { name: "DevOps", color: theme.palette.warning.main, progress: 65 },
+                              { name: "Product Management", color: theme.palette.info.main, progress: 75 },
+                              { name: "Marketing Analytics", color: theme.palette.error.main, progress: 80 },
+                            ].map((role, idx) => (
+                              <Box
+                                key={idx}
+                                component={motion.div}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.2 + idx * 0.1 }}
+                                sx={{
+                                  width: 'calc(50% - 8px)',
+                                  p: 1.5,
+                                  borderRadius: 2,
+                                  background: alpha(role.color, 0.1),
+                                  border: `1px solid ${alpha(role.color, 0.3)}`,
+                                  position: 'relative',
+                                }}
+                              >
+                                <Typography variant="caption" fontWeight={600} sx={{ color: role.color }}>
+                                  {role.name}
+                                </Typography>
+                                
+                                <Box sx={{ mt: 1, width: '100%', height: 4, background: alpha(role.color, 0.2), borderRadius: 2 }}>
+                                  <Box
+                                    component={motion.div}
+                                    initial={{ width: 0 }}
+                                    animate={{ width: `${role.progress}%` }}
+                                    transition={{ duration: 1, delay: 0.5 + idx * 0.1 }}
+                                    sx={{
+                                      height: '100%',
+                                      background: role.color,
+                                      borderRadius: 2,
+                                    }}
+                                  />
+                                </Box>
+                                
+                                <Typography 
+                                  variant="caption" 
+                                  sx={{ 
+                                    position: 'absolute', 
+                                    right: 8, 
+                                    bottom: 8,
+                                    fontWeight: 600,
+                                    color: role.color
+                                  }}
+                                >
+                                  {role.progress}%
+                                </Typography>
+                              </Box>
+                            ))}
+                          </Box>
+                          
+                          <Box
+                            component={motion.div}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 1.5 }}
+                            sx={{
+                              position: 'absolute',
+                              bottom: 10,
+                              right: 10,
+                              display: 'flex',
+                              gap: 1,
+                            }}
+                          >
+                            <Chip 
+                              label="200+ Assessment Templates" 
+                              size="small" 
+                              sx={{ 
+                                background: alpha(theme.palette.warning.main, 0.2),
+                                color: theme.palette.warning.main,
+                                fontWeight: 600,
+                                fontSize: '0.7rem'
+                              }} 
+                            />
+                          </Box>
+                        </Box>
+                      )}
                     </Paper>
                   </Grid>
                 </Grid>
@@ -1066,23 +1123,169 @@ export default function SkillsAssessmentPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
               >
-                <Box
+                <Paper
                   sx={{
-                    position: 'relative',
+                    p: 4,
                     height: 400,
                     width: '100%',
                     borderRadius: 4,
                     overflow: 'hidden',
-                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)'
+                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
+                    background: `linear-gradient(135deg, ${alpha(theme.palette.warning.light, 0.1)} 0%, ${alpha(theme.palette.warning.main, 0.15)} 100%)`,
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    position: 'relative',
                   }}
                 >
-                  <Image
-                    src="/solutions/security.jpg"
-                    alt="Enterprise Security"
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
-                </Box>
+                  {/* Security Shield Animation */}
+                  <Box
+                    component={motion.div}
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    sx={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      width: 180,
+                      height: 180,
+                      borderRadius: '50%',
+                      background: alpha(theme.palette.warning.main, 0.1),
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      zIndex: 2,
+                    }}
+                  >
+                    <Box
+                      component={motion.div}
+                      animate={{ 
+                        scale: [1, 1.05, 1],
+                        boxShadow: [
+                          '0 0 0 rgba(255, 152, 0, 0.4)',
+                          '0 0 20px rgba(255, 152, 0, 0.6)',
+                          '0 0 0 rgba(255, 152, 0, 0.4)'
+                        ]
+                      }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: 'loop'
+                      }}
+                      sx={{
+                        width: 120,
+                        height: 120,
+                        borderRadius: '50%',
+                        background: alpha(theme.palette.warning.main, 0.2),
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <FingerprintIcon 
+                        sx={{ 
+                          fontSize: 70, 
+                          color: theme.palette.warning.main 
+                        }} 
+                      />
+                    </Box>
+                  </Box>
+                  
+                  {/* Animated Security Elements */}
+                  {[
+                    { label: 'GDPR', top: '15%', left: '15%', delay: 0.2 },
+                    { label: 'SOC 2', top: '25%', right: '15%', delay: 0.3 },
+                    { label: 'CCPA', bottom: '20%', left: '20%', delay: 0.4 },
+                    { label: 'ADA', bottom: '30%', right: '20%', delay: 0.5 },
+                    { label: 'HIPAA', top: '40%', left: '10%', delay: 0.6 },
+                  ].map((item, idx) => (
+                    <Box
+                      key={idx}
+                      component={motion.div}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: item.delay }}
+                      sx={{
+                        position: 'absolute',
+                        ...item,
+                        zIndex: 1,
+                      }}
+                    >
+                      <Chip
+                        label={item.label}
+                        size="small"
+                        sx={{
+                          background: alpha(theme.palette.warning.main, 0.2),
+                          color: theme.palette.warning.main,
+                          fontWeight: 600,
+                          border: `1px solid ${alpha(theme.palette.warning.main, 0.3)}`,
+                        }}
+                      />
+                    </Box>
+                  ))}
+                  
+                  {/* Animated Connection Lines */}
+                  <Box
+                    component={motion.div}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.6 }}
+                    transition={{ delay: 0.8 }}
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      zIndex: 0,
+                    }}
+                  >
+                    <svg width="100%" height="100%" style={{ position: 'absolute' }}>
+                      <motion.circle
+                        cx="50%"
+                        cy="50%"
+                        r="35%"
+                        fill="none"
+                        stroke={alpha(theme.palette.warning.main, 0.2)}
+                        strokeWidth="1"
+                        strokeDasharray="5,5"
+                        initial={{ rotate: 0 }}
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                      />
+                      <motion.circle
+                        cx="50%"
+                        cy="50%"
+                        r="25%"
+                        fill="none"
+                        stroke={alpha(theme.palette.warning.main, 0.15)}
+                        strokeWidth="1"
+                        initial={{ rotate: 0 }}
+                        animate={{ rotate: -360 }}
+                        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                      />
+                    </svg>
+                  </Box>
+                  
+                  {/* Data Protection Text */}
+                  <Box
+                    component={motion.div}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1 }}
+                    sx={{
+                      position: 'absolute',
+                      bottom: 20,
+                      left: 0,
+                      right: 0,
+                      textAlign: 'center',
+                    }}
+                  >
+                    <Typography variant="caption" sx={{ color: theme.palette.text.secondary, fontWeight: 500 }}>
+                      End-to-End Encryption • Regular Security Audits • Penetration Testing
+                    </Typography>
+                  </Box>
+                </Paper>
               </Grid>
             </Grid>
           </Container>

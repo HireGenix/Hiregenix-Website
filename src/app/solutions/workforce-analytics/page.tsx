@@ -33,351 +33,19 @@ import { motion } from 'framer-motion';
 import { SEOMetadata } from '@/components/SEO';
 import { Layout } from '@/components/Layout';
 import { SolutionsCTA } from '@/components/Solutions';
+import { HeroSection, seoData } from './components';
 
 export default function WorkforceAnalyticsPage() {
   const theme = useTheme();
 
-  const seoData = {
-    title: 'Workforce Analytics Solution | HireGenix',
-    description: 'Gain powerful insights into your workforce with our predictive analytics platform, helping you make data-driven decisions about hiring and team composition.',
-    keywords: 'workforce analytics, predictive analytics, talent analytics, HR analytics, employee data, workforce planning, attrition prediction',
-  };
+  // Using imported seoData from components
 
   return (
     <Layout>
       <SEOMetadata seoData={seoData} />
       
       {/* Hero Section */}
-      <Box
-        sx={{
-          position: 'relative',
-          py: { xs: 10, md: 16 },
-          background: `linear-gradient(135deg, ${theme.palette.success.main} 0%, ${theme.palette.success.dark} 100%)`,
-          color: 'white',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Background pattern */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            opacity: 0.1,
-            backgroundImage: 'url(/hero-pattern.svg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            zIndex: 1,
-          }}
-        />
-        
-        {/* Animated shapes */}
-        <Box
-          component={motion.div}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ 
-            opacity: 1, 
-            scale: 1,
-            transition: { duration: 1.5, ease: "easeOut" }
-          }}
-          sx={{
-            position: 'absolute',
-            top: '10%',
-            left: '5%',
-            width: { xs: 60, md: 100 },
-            height: { xs: 60, md: 100 },
-            borderRadius: '50%',
-            background: 'rgba(255, 255, 255, 0.1)',
-            zIndex: 1,
-            animation: 'float 8s ease-in-out infinite',
-            '@keyframes float': {
-              '0%, 100%': { transform: 'translateY(0) scale(1)' },
-              '50%': { transform: 'translateY(-20px) scale(1.1)' },
-            },
-          }}
-        />
-        
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
-          <Grid container spacing={6} alignItems="center">
-            <Grid 
-              item 
-              xs={12} 
-              md={6}
-              component={motion.div}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <Chip 
-                  label="WORKFORCE ANALYTICS" 
-                  color="primary" 
-                  size="medium"
-                  icon={<InsightsIcon />}
-                  sx={{ 
-                    mb: 3, 
-                    fontWeight: 600,
-                    background: 'rgba(255, 255, 255, 0.2)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    color: 'white',
-                    px: 2,
-                    py: 2.5,
-                    '& .MuiChip-label': {
-                      px: 1,
-                    },
-                    '& .MuiChip-icon': {
-                      color: 'white',
-                    }
-                  }} 
-                />
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
-                <Typography
-                  variant="h1"
-                  component="h1"
-                  sx={{
-                    fontWeight: 800,
-                    fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
-                    mb: 2,
-                    background: 'linear-gradient(90deg, #ffffff 0%, #f0f0ff 100%)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    textShadow: '0 2px 10px rgba(0,0,0,0.1)',
-                    lineHeight: 1.2,
-                  }}
-                >
-                  Predictive Workforce Analytics
-                </Typography>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                <Typography
-                  variant="h5"
-                  component="p"
-                  sx={{
-                    fontSize: { xs: '1.25rem', md: '1.5rem' },
-                    fontWeight: 400,
-                    mb: 4,
-                    opacity: 0.9,
-                    maxWidth: 600,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  Gain powerful insights into your workforce with our predictive analytics platform, helping you make data-driven decisions about hiring and team composition.
-                </Typography>
-              </motion.div>
-              
-              <Box 
-                component={motion.div}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                sx={{ 
-                  display: 'flex', 
-                  flexWrap: { xs: 'wrap', sm: 'nowrap' },
-                  gap: 2,
-                }}
-              >
-                <Button
-                  component={Link}
-                  href="/demo"
-                  variant="contained"
-                  color="secondary"
-                  size="large"
-                  endIcon={<ArrowForwardIcon />}
-                  sx={{
-                    py: 1.5,
-                    px: 4,
-                    borderRadius: 50,
-                    fontWeight: 600,
-                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.2)',
-                    background: `linear-gradient(90deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.dark})`,
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-3px)',
-                      boxShadow: '0 12px 25px rgba(0, 0, 0, 0.3)',
-                    }
-                  }}
-                >
-                  Request Demo
-                </Button>
-                <Button
-                  component={Link}
-                  href="/contact"
-                  variant="outlined"
-                  size="large"
-                  sx={{
-                    py: 1.5,
-                    px: 4,
-                    borderRadius: 50,
-                    fontWeight: 600,
-                    borderColor: 'rgba(255, 255, 255, 0.5)',
-                    color: 'white',
-                    '&:hover': {
-                      borderColor: 'white',
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    },
-                  }}
-                >
-                  Learn More
-                </Button>
-              </Box>
-            </Grid>
-            
-            <Grid
-              item
-              xs={12}
-              md={6}
-              sx={{
-                display: { xs: 'none', md: 'block' }
-              }}
-              component={motion.div}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            >
-              <Box
-                sx={{
-                  position: 'relative',
-                  width: '100%',
-                  height: 500,
-                }}
-              >
-                {/* Main image container */}
-                <Box
-                  component={motion.div}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.7, delay: 0.4 }}
-                  sx={{
-                    position: 'absolute',
-                    width: '90%',
-                    height: 400,
-                    borderRadius: '30px',
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    overflow: 'hidden',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    zIndex: 2,
-                  }}
-                >
-                  <Image
-                    src="/solutions/talent-analytics.jpg"
-                    alt="Workforce Analytics"
-                    width={500}
-                    height={350}
-                    style={{ objectFit: 'cover', borderRadius: '20px' }}
-                  />
-                </Box>
-                
-                {/* Decorative elements */}
-                <Box
-                  component={motion.div}
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  sx={{
-                    position: 'absolute',
-                    top: '10%',
-                    right: '5%',
-                    width: 100,
-                    height: 100,
-                    borderRadius: '20px',
-                    background: alpha(theme.palette.success.light, 0.2),
-                    border: `1px solid ${alpha(theme.palette.success.light, 0.3)}`,
-                    zIndex: 1,
-                    transform: 'rotate(15deg)',
-                  }}
-                />
-                
-                <Box
-                  component={motion.div}
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.7 }}
-                  sx={{
-                    position: 'absolute',
-                    bottom: '15%',
-                    left: '10%',
-                    width: 120,
-                    height: 120,
-                    borderRadius: '50%',
-                    border: `2px dashed ${alpha(theme.palette.success.light, 0.5)}`,
-                    zIndex: 1,
-                  }}
-                />
-                
-                {/* Floating feature cards */}
-                {[
-                  { 
-                    icon: <BarChartIcon />, 
-                    text: 'Attrition Prediction', 
-                    position: { top: '15%', left: '0%' }
-                  },
-                  { 
-                    icon: <TimelineIcon />, 
-                    text: 'Performance Prediction', 
-                    position: { bottom: '10%', right: '5%' }
-                  },
-                ].map((feature, index) => (
-                  <Paper
-                    key={index}
-                    component={motion.div}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.8 + index * 0.2 }}
-                    elevation={0}
-                    sx={{
-                      position: 'absolute',
-                      display: 'flex',
-                      alignItems: 'center',
-                      px: 2,
-                      py: 1.5,
-                      borderRadius: 3,
-                      background: 'rgba(255, 255, 255, 0.15)',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255, 255, 255, 0.3)',
-                      zIndex: 3,
-                      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.1)',
-                      ...feature.position
-                    }}
-                  >
-                    <Box sx={{ color: 'white', mr: 1 }}>
-                      {feature.icon}
-                    </Box>
-                    <Typography variant="body2" sx={{ fontWeight: 600, color: 'white' }}>
-                      {feature.text}
-                    </Typography>
-                  </Paper>
-                ))}
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
+      <HeroSection />
 
       {/* Features Section */}
       <Box 
@@ -539,13 +207,31 @@ export default function WorkforceAnalyticsPage() {
                           borderRadius: 4,
                           boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
                           transition: 'all 0.3s ease',
+                          overflow: 'hidden',
+                          position: 'relative',
+                          background: `linear-gradient(135deg, ${alpha(feature.color, 0.05)} 0%, ${alpha(feature.color, 0.15)} 100%)`,
                           '&:hover': {
                             transform: 'translateY(-5px)',
                             boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
                           }
                         }}
                       >
+                        {/* Feature Icon with Animation */}
                         <Box
+                          component={motion.div}
+                          animate={{ 
+                            scale: [1, 1.05, 1],
+                            boxShadow: [
+                              '0 0 0 rgba(0, 0, 0, 0)',
+                              `0 0 20px ${alpha(feature.color, 0.4)}`,
+                              '0 0 0 rgba(0, 0, 0, 0)'
+                            ]
+                          }}
+                          transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            repeatType: 'loop'
+                          }}
                           sx={{
                             width: 60,
                             height: 60,
@@ -560,12 +246,345 @@ export default function WorkforceAnalyticsPage() {
                         >
                           {feature.icon}
                         </Box>
+                        
                         <Typography variant="h6" fontWeight={600} sx={{ mb: 1 }}>
                           {feature.title}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        
+                        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                           {feature.description}
                         </Typography>
+                        
+                        {/* Feature-specific interactive elements */}
+                        {index === 0 && (
+                          // Attrition Prediction
+                          <Box sx={{ mt: 'auto' }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
+                              <Typography variant="caption" fontWeight={600}>
+                                Attrition Risk
+                              </Typography>
+                              <Typography variant="caption" fontWeight={600} color={feature.color}>
+                                68%
+                              </Typography>
+                            </Box>
+                            <Box sx={{ width: '100%', height: 6, background: alpha(feature.color, 0.2), borderRadius: 3, mb: 2 }}>
+                              <Box
+                                component={motion.div}
+                                initial={{ width: 0 }}
+                                animate={{ width: '68%' }}
+                                transition={{ duration: 1, delay: 0.2 }}
+                                sx={{
+                                  height: '100%',
+                                  background: feature.color,
+                                  borderRadius: 3,
+                                }}
+                              />
+                            </Box>
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.5 }}
+                              sx={{ 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'center',
+                                gap: 1,
+                              }}
+                            >
+                              <Chip 
+                                label="High Risk" 
+                                size="small" 
+                                sx={{ 
+                                  background: alpha(theme.palette.error.main, 0.1),
+                                  color: theme.palette.error.main,
+                                  fontWeight: 600,
+                                  fontSize: '0.7rem'
+                                }} 
+                              />
+                              <Chip 
+                                label="Action Required" 
+                                size="small" 
+                                sx={{ 
+                                  background: alpha(theme.palette.warning.main, 0.1),
+                                  color: theme.palette.warning.main,
+                                  fontWeight: 600,
+                                  fontSize: '0.7rem'
+                                }} 
+                              />
+                            </Box>
+                          </Box>
+                        )}
+                        
+                        {index === 1 && (
+                          // Performance Prediction
+                          <Box sx={{ mt: 'auto' }}>
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.2 }}
+                              sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}
+                            >
+                              {['Q1', 'Q2', 'Q3', 'Q4'].map((quarter, idx) => (
+                                <Box key={idx} sx={{ textAlign: 'center' }}>
+                                  <Typography variant="caption" fontWeight={600}>
+                                    {quarter}
+                                  </Typography>
+                                  <Box
+                                    component={motion.div}
+                                    initial={{ height: 0 }}
+                                    animate={{ height: [0, 20 + idx * 10, 20 + idx * 10] }}
+                                    transition={{ duration: 0.5, delay: 0.3 + idx * 0.1 }}
+                                    sx={{
+                                      width: 10,
+                                      background: feature.color,
+                                      borderRadius: 3,
+                                      mx: 'auto',
+                                      mt: 0.5,
+                                    }}
+                                  />
+                                </Box>
+                              ))}
+                            </Box>
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.7 }}
+                              sx={{ 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'center',
+                                mt: 2,
+                              }}
+                            >
+                              <Chip 
+                                label="Projected Growth: 32%" 
+                                size="small" 
+                                sx={{ 
+                                  background: alpha(feature.color, 0.1),
+                                  color: feature.color,
+                                  fontWeight: 600,
+                                  fontSize: '0.7rem'
+                                }} 
+                              />
+                            </Box>
+                          </Box>
+                        )}
+                        
+                        {index === 2 && (
+                          // Team Composition
+                          <Box sx={{ mt: 'auto' }}>
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.2 }}
+                              sx={{ display: 'flex', justifyContent: 'center', gap: 1, mb: 1 }}
+                            >
+                              {[
+                                { size: 40, color: theme.palette.primary.main, delay: 0.3 },
+                                { size: 35, color: theme.palette.secondary.main, delay: 0.4 },
+                                { size: 45, color: theme.palette.success.main, delay: 0.5 },
+                                { size: 30, color: theme.palette.warning.main, delay: 0.6 },
+                                { size: 38, color: theme.palette.info.main, delay: 0.7 },
+                              ].map((circle, idx) => (
+                                <Box
+                                  key={idx}
+                                  component={motion.div}
+                                  initial={{ scale: 0 }}
+                                  animate={{ scale: 1 }}
+                                  transition={{ duration: 0.4, delay: circle.delay }}
+                                  sx={{
+                                    width: circle.size,
+                                    height: circle.size,
+                                    borderRadius: '50%',
+                                    background: alpha(circle.color, 0.2),
+                                    border: `2px solid ${alpha(circle.color, 0.5)}`,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    fontSize: '0.7rem',
+                                    fontWeight: 600,
+                                    color: circle.color,
+                                  }}
+                                >
+                                  {idx + 1}
+                                </Box>
+                              ))}
+                            </Box>
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.8 }}
+                              sx={{ 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'center',
+                                mt: 1,
+                              }}
+                            >
+                              <Chip 
+                                label="Optimal Team Balance" 
+                                size="small" 
+                                sx={{ 
+                                  background: alpha(feature.color, 0.1),
+                                  color: feature.color,
+                                  fontWeight: 600,
+                                  fontSize: '0.7rem'
+                                }} 
+                              />
+                            </Box>
+                          </Box>
+                        )}
+                        
+                        {index === 3 && (
+                          // Hiring Forecasting
+                          <Box sx={{ mt: 'auto' }}>
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.2 }}
+                              sx={{ mb: 1 }}
+                            >
+                              {[
+                                { month: 'Jan', value: 2 },
+                                { month: 'Feb', value: 3 },
+                                { month: 'Mar', value: 5 },
+                                { month: 'Apr', value: 4 },
+                                { month: 'May', value: 7 },
+                                { month: 'Jun', value: 6 },
+                              ].map((item, idx) => (
+                                <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 0.5 }}>
+                                  <Typography variant="caption" sx={{ width: 30, fontWeight: 600 }}>
+                                    {item.month}
+                                  </Typography>
+                                  <Box sx={{ flex: 1, ml: 1 }}>
+                                    <Box
+                                      component={motion.div}
+                                      initial={{ width: 0 }}
+                                      animate={{ width: `${item.value * 15}%` }}
+                                      transition={{ duration: 0.5, delay: 0.3 + idx * 0.1 }}
+                                      sx={{
+                                        height: 6,
+                                        background: feature.color,
+                                        borderRadius: 3,
+                                      }}
+                                    />
+                                  </Box>
+                                  <Typography variant="caption" sx={{ ml: 1, fontWeight: 600, color: feature.color }}>
+                                    {item.value}
+                                  </Typography>
+                                </Box>
+                              ))}
+                            </Box>
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.9 }}
+                              sx={{ 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'center',
+                              }}
+                            >
+                              <Chip 
+                                label="Total: 27 New Hires" 
+                                size="small" 
+                                sx={{ 
+                                  background: alpha(feature.color, 0.1),
+                                  color: feature.color,
+                                  fontWeight: 600,
+                                  fontSize: '0.7rem'
+                                }} 
+                              />
+                            </Box>
+                          </Box>
+                        )}
+                        
+                        {index === 4 && (
+                          // Salary Optimization
+                          <Box sx={{ mt: 'auto' }}>
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.2 }}
+                              sx={{ mb: 1 }}
+                            >
+                              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
+                                <Typography variant="caption" fontWeight={600}>
+                                  Market Rate
+                                </Typography>
+                                <Typography variant="caption" fontWeight={600} color={feature.color}>
+                                  $85,000
+                                </Typography>
+                              </Box>
+                              <Box sx={{ width: '100%', height: 6, background: alpha(feature.color, 0.2), borderRadius: 3, mb: 1.5 }}>
+                                <Box
+                                  component={motion.div}
+                                  initial={{ width: 0 }}
+                                  animate={{ width: '75%' }}
+                                  transition={{ duration: 1, delay: 0.3 }}
+                                  sx={{
+                                    height: '100%',
+                                    background: feature.color,
+                                    borderRadius: 3,
+                                  }}
+                                />
+                              </Box>
+                              
+                              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
+                                <Typography variant="caption" fontWeight={600}>
+                                  Current Avg
+                                </Typography>
+                                <Typography variant="caption" fontWeight={600} color={theme.palette.warning.main}>
+                                  $78,500
+                                </Typography>
+                              </Box>
+                              <Box sx={{ width: '100%', height: 6, background: alpha(theme.palette.warning.main, 0.2), borderRadius: 3 }}>
+                                <Box
+                                  component={motion.div}
+                                  initial={{ width: 0 }}
+                                  animate={{ width: '65%' }}
+                                  transition={{ duration: 1, delay: 0.4 }}
+                                  sx={{
+                                    height: '100%',
+                                    background: theme.palette.warning.main,
+                                    borderRadius: 3,
+                                  }}
+                                />
+                              </Box>
+                            </Box>
+                            <Box
+                              component={motion.div}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.8 }}
+                              sx={{ 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'center',
+                                mt: 1,
+                              }}
+                            >
+                              <Chip 
+                                label="Adjustment Needed: +8.3%" 
+                                size="small" 
+                                sx={{ 
+                                  background: alpha(feature.color, 0.1),
+                                  color: feature.color,
+                                  fontWeight: 600,
+                                  fontSize: '0.7rem'
+                                }} 
+                              />
+                            </Box>
+                          </Box>
+                        )}
                       </Paper>
                     </motion.div>
                   </Grid>
