@@ -115,10 +115,10 @@ export default function Header() {
           color="default" 
           elevation={scrolled ? 4 : 0}
           sx={{
-            backgroundColor: scrolled ? theme.palette.background.paper : 'transparent',
-            backdropFilter: scrolled ? 'blur(20px)' : 'none',
+            backgroundColor: theme.palette.background.paper,
             transition: 'all 0.3s ease',
             borderBottom: scrolled ? '1px solid rgba(0, 0, 0, 0.05)' : 'none',
+            boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.08)' : 'none',
           }}
         >
           <Container maxWidth="lg">
