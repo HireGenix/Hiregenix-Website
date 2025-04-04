@@ -43,7 +43,7 @@ const caseStudies = [
   {
     id: 'bccm',
     company: 'BCCM',
-    logo: '/logo.png', // Placeholder, replace with actual company logo
+    logo: '/clients/bccm logo.png',
     industry: 'Hospitality',
     headline: 'Revolutionizing Hospitality Hiring with AI-Powered Recruitment',
     summary: 'How BCCM reduced time-to-hire by 45% and improved candidate quality using HireGenix\'s AI matching technology.',
@@ -101,7 +101,7 @@ const caseStudies = [
   {
     id: 'xs-worldwide',
     company: 'XS Worldwide',
-    logo: '/logo.png', // Placeholder, replace with actual company logo
+    logo: '/clients/xs-nxt-light.webp',
     industry: 'Exhibition Industry',
     headline: 'Transforming Exhibition Industry Recruitment with Specialized Skills Assessment',
     summary: 'XS Worldwide achieved 60% improvement in candidate retention after implementing HireGenix\'s specialized exhibition industry skills assessment.',
@@ -159,7 +159,7 @@ const caseStudies = [
   {
     id: 'startupflux',
     company: 'StartupFlux',
-    logo: '/logo.png', // Placeholder, replace with actual company logo
+    logo: '/clients/startupflux.svg',
     industry: 'Marketing and Communications',
     headline: 'Scaling Recruitment Operations for Rapid Growth',
     summary: 'How StartupFlux tripled their hiring capacity while maintaining quality during a period of rapid expansion.',
@@ -217,7 +217,7 @@ const caseStudies = [
   {
     id: 'youlegal',
     company: 'YouLegal',
-    logo: '/logo.png', // Placeholder, replace with actual company logo
+    logo: '/clients/FB836_YouLegal_Final.png',
     industry: 'Medical Legal (Australia)',
     headline: 'Streamlining Specialized Legal Hiring',
     summary: 'YouLegal reduced hiring time by 65% while improving employee retention in the medical legal sector.',
@@ -355,14 +355,18 @@ export default function CaseStudyDetailPage() {
       {/* Hero Section */}
       <Box
         sx={{
-          pt: { xs: 12, md: 16 },
-          pb: { xs: 8, md: 12 },
           position: 'relative',
+          minHeight: { xs: 'auto', md: '80vh' },
+          display: 'flex',
+          alignItems: 'center',
           overflow: 'hidden',
-          background: `linear-gradient(135deg, ${alpha(theme.palette.primary.dark, 0.05)} 0%, ${alpha(theme.palette.secondary.dark, 0.1)} 100%)`,
+          background: `linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%)`,
+          color: '#FFFFFF',
+          pt: { xs: 12, md: 0 },
+          pb: { xs: 10, md: 0 }
         }}
       >
-        {/* Background elements */}
+        {/* Geometric pattern overlay */}
         <Box
           sx={{
             position: 'absolute',
@@ -374,18 +378,71 @@ export default function CaseStudyDetailPage() {
             backgroundImage: 'url(/hero-pattern.svg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            zIndex: 0,
+            zIndex: 1
           }}
         />
 
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+        {/* Animated gradient orbs */}
+        <Box
+          component={motion.div}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.2 }}
+          transition={{ duration: 1.5 }}
+          sx={{
+            position: 'absolute',
+            top: '10%',
+            right: '5%',
+            width: { xs: 200, md: 400 },
+            height: { xs: 200, md: 400 },
+            borderRadius: '50%',
+            background: `radial-gradient(circle, ${theme.palette.primary.main}80 0%, rgba(0,0,0,0) 70%)`,
+            filter: 'blur(80px)',
+            zIndex: 1,
+            animation: 'pulse 8s ease-in-out infinite',
+            '@keyframes pulse': {
+              '0%, 100%': { transform: 'scale(1)', opacity: 0.2 },
+              '50%': { transform: 'scale(1.1)', opacity: 0.3 }
+            }
+          }}
+        />
+
+        <Box
+          component={motion.div}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.15 }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+          sx={{
+            position: 'absolute',
+            bottom: '10%',
+            left: '5%',
+            width: { xs: 150, md: 300 },
+            height: { xs: 150, md: 300 },
+            borderRadius: '50%',
+            background: `radial-gradient(circle, ${theme.palette.secondary.main}80 0%, rgba(0,0,0,0) 70%)`,
+            filter: 'blur(80px)',
+            zIndex: 1,
+            animation: 'pulse2 10s ease-in-out infinite',
+            '@keyframes pulse2': {
+              '0%, 100%': { transform: 'scale(1)', opacity: 0.15 },
+              '50%': { transform: 'scale(1.15)', opacity: 0.25 }
+            }
+          }}
+        />
+
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
           <Button
             variant="text"
-            color="primary"
+            color="inherit"
             component={Link}
             href="/case-studies"
             startIcon={<ArrowBackIcon />}
-            sx={{ mb: 4 }}
+            sx={{ 
+              mb: 4, 
+              color: '#FFFFFF',
+              '&:hover': {
+                color: alpha('#FFFFFF', 0.8)
+              }
+            }}
           >
             Back to Case Studies
           </Button>
@@ -399,14 +456,16 @@ export default function CaseStudyDetailPage() {
               >
                 <Chip
                   label={caseStudy.industry}
-                  color="secondary"
-                  size="small"
-                  sx={{
-                    mb: 2,
-                    fontWeight: 600,
-                    background: alpha(theme.palette.secondary.main, 0.1),
-                    border: `1px solid ${alpha(theme.palette.secondary.main, 0.3)}`,
-                    color: theme.palette.secondary.main,
+                  sx={{ 
+                    mb: 3, 
+                    py: 2,
+                    px: 2,
+                    borderRadius: '50px',
+                    background: `linear-gradient(90deg, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`,
+                    color: '#FFFFFF',
+                    fontWeight: 700,
+                    fontSize: '0.75rem',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
                   }}
                 />
 
@@ -414,13 +473,15 @@ export default function CaseStudyDetailPage() {
                   variant="h1"
                   component="h1"
                   sx={{
-                    fontSize: { xs: '2.25rem', md: '3rem' },
+                    fontSize: { xs: '2.25rem', sm: '3rem', md: '3.5rem' },
                     fontWeight: 800,
-                    mb: 3,
-                    background: `linear-gradient(90deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+                    mb: 2,
+                    background: `linear-gradient(90deg, #FFFFFF 0%, ${theme.palette.primary.light} 100%)`,
                     backgroundClip: 'text',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.02em'
                   }}
                 >
                   {caseStudy.headline}
@@ -429,12 +490,13 @@ export default function CaseStudyDetailPage() {
                 <Typography
                   variant="h5"
                   component="p"
-                  color="text.secondary"
                   sx={{
                     fontSize: { xs: '1.1rem', md: '1.25rem' },
                     fontWeight: 400,
                     mb: 4,
-                    lineHeight: 1.6,
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    maxWidth: 600,
+                    lineHeight: 1.6
                   }}
                 >
                   {caseStudy.summary}
@@ -473,7 +535,7 @@ export default function CaseStudyDetailPage() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         borderRadius: '16px',
-                        background: 'white',
+                        background: '#FFFFFF',
                         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
                         mr: 2
                       }}
@@ -563,7 +625,7 @@ export default function CaseStudyDetailPage() {
       <Box
         sx={{
           py: { xs: 6, md: 8 },
-          background: 'white',
+          background: '#FFFFFF',
         }}
       >
         <Container maxWidth="lg">
