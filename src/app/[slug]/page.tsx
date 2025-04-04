@@ -988,7 +988,7 @@ export default function DynamicPage() {
       description: page.seo?.description || '',
       keywords: page.seo?.keywords || '',
       ogImage: page.seo?.ogImage || '',
-      ogUrl: `/${page.slug}`
+      canonicalUrl: `/${page.slug}`
     };
   }, [page]);
 

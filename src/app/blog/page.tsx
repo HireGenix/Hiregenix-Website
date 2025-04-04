@@ -240,7 +240,7 @@ export default function BlogPage() {
     title: "Blog | HireGenix",
     description: "Latest articles, insights and updates from HireGenix on recruitment, hiring and HR technology.",
     keywords: "HireGenix blog, recruitment insights, hiring tips, HR technology articles",
-    ogUrl: "/blog"
+    canonicalUrl: "/blog"
   };
 
   return (

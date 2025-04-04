@@ -296,7 +296,7 @@ export default function BlogPostPage() {
     title: `${post.title} | HireGenix Blog`,
     description: post.excerpt,
     ogImage: post.featuredImage,
-    ogUrl: `/blog/${post.slug}`,
+    canonicalUrl: `/blog/${post.slug}`,
     keywords: post.category?.name || 'blog, recruitment, hiring, HR technology',
   };
 
