@@ -17,3 +17,4 @@ export * from './IndustrySolutionsSection';
 export * from './SecurityComplianceSection';
 export * from './BlogResourcesSection';
 export * from './AwardsRecognitionSection';
+export { default as HomePage } from './HomePage';
