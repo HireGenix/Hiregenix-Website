@@ -1,16 +1,42 @@
-import { createClient } from 'redis';
+// Check if we're in a build environment
+const isBuildEnv = process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'build';
+
+// Only import Redis if we're not in a build environment
+let createClient: any;
+if (!isBuildEnv) {
+  try {
+    // Dynamic import to avoid build-time errors
+    createClient = require('redis').createClient;
+  } catch (error) {
+    console.warn('Redis client not available, using mock implementation');
+    createClient = null;
+  }
+}
 
 // Initialize Redis client with lazy loading pattern
-let redisClient: ReturnType<typeof createClient> | null = null;
+let redisClient: any = null;
+
+// In-memory cache for mock implementation
+const mockCache: Record<string, { value: string; expiry?: number }> = {};
 
 /**
  * Get Redis client instance
  * @returns Redis client instance or null if Redis is not configured
  */
 export async function getRedisClient() {
+  // If we're in a build environment, return null
+  if (isBuildEnv) {
+    return null;
+  }
+
   // If we've already tried to initialize, return the existing client
   if (redisClient !== null) {
     return redisClient;
+  }
+
+  // If Redis client is not available, return null
+  if (!createClient) {
+    return null;
   }
 
   // Get Redis environment variables
@@ -46,7 +72,7 @@ export async function getRedisClient() {
     }
 
     // Set up error handler
-    redisClient.on('error', (err) => {
+    redisClient.on('error', (err: Error) => {
       console.error('Redis Client Error:', err);
     });
 
@@ -70,8 +96,24 @@ export async function getRedisClient() {
  * @returns true if successful, false otherwise
  */
 export async function setCache(key: string, value: string, expiryInSeconds?: number): Promise<boolean> {
+  // If we're in a build environment, use mock implementation
+  if (isBuildEnv) {
+    mockCache[key] = { 
+      value, 
+      expiry: expiryInSeconds ? Date.now() + (expiryInSeconds * 1000) : undefined 
+    };
+    return true;
+  }
+
   const client = await getRedisClient();
-  if (!client) return false;
+  if (!client) {
+    // Use mock implementation if Redis is not available
+    mockCache[key] = { 
+      value, 
+      expiry: expiryInSeconds ? Date.now() + (expiryInSeconds * 1000) : undefined 
+    };
+    return true;
+  }
 
   try {
     if (expiryInSeconds) {
@@ -92,8 +134,34 @@ export async function setCache(key: string, value: string, expiryInSeconds?: num
  * @returns Value or null if not found or error
  */
 export async function getCache(key: string): Promise<string | null> {
+  // If we're in a build environment, use mock implementation
+  if (isBuildEnv) {
+    const cached = mockCache[key];
+    if (!cached) return null;
+    
+    // Check if expired
+    if (cached.expiry && cached.expiry < Date.now()) {
+      delete mockCache[key];
+      return null;
+    }
+    
+    return cached.value;
+  }
+
   const client = await getRedisClient();
-  if (!client) return null;
+  if (!client) {
+    // Use mock implementation if Redis is not available
+    const cached = mockCache[key];
+    if (!cached) return null;
+    
+    // Check if expired
+    if (cached.expiry && cached.expiry < Date.now()) {
+      delete mockCache[key];
+      return null;
+    }
+    
+    return cached.value;
+  }
 
   try {
     return await client.get(key);
@@ -109,8 +177,18 @@ export async function getCache(key: string): Promise<string | null> {
  * @returns true if successful, false otherwise
  */
 export async function deleteCache(key: string): Promise<boolean> {
+  // If we're in a build environment, use mock implementation
+  if (isBuildEnv) {
+    delete mockCache[key];
+    return true;
+  }
+
   const client = await getRedisClient();
-  if (!client) return false;
+  if (!client) {
+    // Use mock implementation if Redis is not available
+    delete mockCache[key];
+    return true;
+  }
 
   try {
     await client.del(key);
@@ -126,6 +204,11 @@ export async function deleteCache(key: string): Promise<boolean> {
  * @returns true if connected, false otherwise
  */
 export async function isRedisConnected(): Promise<boolean> {
+  // If we're in a build environment, return false
+  if (isBuildEnv) {
+    return false;
+  }
+
   const client = await getRedisClient();
   if (!client) return false;
 
