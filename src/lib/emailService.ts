@@ -7,30 +7,48 @@ export const EMAIL_ADDRESSES = {
   LEADS: 'leads@myhiregenix.com',
 };
 
-// Ensure required SMTP environment variables are set
-const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, SMTP_SECURE, EMAIL_FROM } = process.env;
+// We'll initialize the transporter lazily to avoid issues during build time
+let transporter: nodemailer.Transporter | null = null;
 
-let transporter: nodemailer.Transporter;
+// Function to initialize the transporter
+function getTransporter(): nodemailer.Transporter | null {
+  // If we've already tried to initialize, return the existing result
+  if (transporter !== null) {
+    return transporter;
+  }
 
-if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASSWORD) {
-  console.error('--------------------------------------------------------------------');
-  console.error('ERROR: Missing required SMTP environment variables.');
-  console.error('Please set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD in your .env file.');
-  console.error('Email sending will be disabled until these variables are set.');
-  console.error('--------------------------------------------------------------------');
-  // Create a dummy transporter or handle appropriately if needed elsewhere
-  // For now, we'll let it be undefined, and the sendEmail function will handle it.
-} else {
+  // Get SMTP environment variables
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, SMTP_SECURE } = process.env;
+
+  // Check if required variables are set
+  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASSWORD) {
+    // Only log the error in a non-build environment (i.e., when actually sending emails)
+    if (process.env.NODE_ENV !== 'production' || process.env.NEXT_PHASE !== 'build') {
+      console.error('--------------------------------------------------------------------');
+      console.error('ERROR: Missing required SMTP environment variables.');
+      console.error('Please set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD in your .env file.');
+      console.error('Email sending will be disabled until these variables are set.');
+      console.error('--------------------------------------------------------------------');
+    }
+    return null;
+  }
+
   // Create a transporter with SMTP settings from environment variables
-  transporter = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: parseInt(SMTP_PORT), // Rely on the check above
-    secure: SMTP_SECURE === 'true', // Defaults to false if not set or not 'true'
-    auth: {
-      user: SMTP_USER,
-      pass: SMTP_PASSWORD,
-    },
-  });
+  try {
+    transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: parseInt(SMTP_PORT),
+      secure: SMTP_SECURE === 'true', // Defaults to false if not set or not 'true'
+      auth: {
+        user: SMTP_USER,
+        pass: SMTP_PASSWORD,
+      },
+    });
+    return transporter;
+  } catch (error) {
+    console.error('Error creating email transporter:', error);
+    return null;
+  }
 }
 
 interface EmailOptions {
@@ -46,23 +64,27 @@ interface EmailOptions {
  * @returns Promise resolving to true if email sent successfully, false otherwise
  */
 export async function sendEmail(options: EmailOptions): Promise<boolean> {
-  // Check if transporter is configured (i.e., if SMTP env vars were set)
-  if (!transporter) {
-    console.error('Email sending is disabled because SMTP environment variables are not configured.');
-    // Optionally, log the email details that would have been sent
-    console.log('--- Email Not Sent (SMTP Disabled) ---');
-    console.log('To:', options.to);
-    console.log('Subject:', options.subject);
-    console.log('Text:', options.text);
-    console.log('--------------------------------------');
+  // Get or initialize the transporter
+  const emailTransporter = getTransporter();
+  
+  // Check if transporter is configured
+  if (!emailTransporter) {
+    // Only log in non-build environments
+    if (process.env.NODE_ENV !== 'production' || process.env.NEXT_PHASE !== 'build') {
+      console.log('--- Email Not Sent (SMTP Disabled) ---');
+      console.log('To:', options.to);
+      console.log('Subject:', options.subject);
+      console.log('Text:', options.text);
+      console.log('--------------------------------------');
+    }
     // Return false as the email was not actually sent
     return false; 
   }
 
   try {
     // Send the email using the configured transporter
-    const info = await transporter.sendMail({
-      from: EMAIL_FROM || 'HireGenix <noreply@myhiregenix.com>', // Use EMAIL_FROM from env
+    const info = await emailTransporter.sendMail({
+      from: process.env.EMAIL_FROM || 'HireGenix <noreply@myhiregenix.com>', // Use EMAIL_FROM from env
       ...options,
     });
 
