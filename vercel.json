@@ -7,7 +7,13 @@
   "outputDirectory": ".next",
   "regions": ["iad1"],
   "env": {
-    "NEXTAUTH_URL": "https://hiregenix-website.vercel.app"
+    "NEXTAUTH_URL": "https://hiregenix-website.vercel.app",
+    "SMTP_HOST": "smtp-relay.brevo.com",
+    "SMTP_PORT": "587",
+    "SMTP_SECURE": "false",
+    "SMTP_USER": "8706e0001@smtp-brevo.com",
+    "SMTP_PASSWORD": "J3XD6Rk1TdKFP78b",
+    "EMAIL_FROM": "HireGenix <noreply@myhiregenix.com>"
   },
   "headers": [
     {
