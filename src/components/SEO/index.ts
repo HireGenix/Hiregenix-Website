@@ -1,1 +1,4 @@
-export { SEOMetadata } from './SEOMetadata';
+import SEOHead from './SEOHead';
+import SEOMetadata from './SEOMetadata';
+
+export { SEOHead, SEOMetadata };

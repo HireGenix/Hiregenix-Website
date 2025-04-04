@@ -10,12 +10,25 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.myhiregenix.com'),
   title: 'HireGenix - Modern Recruitment Platform',
   description: 'HireGenix is a modern recruitment platform that leverages artificial intelligence to help companies find the best talent.',
-  keywords: 'recruitment, hiring, AI, talent acquisition, HireGenix',
+  keywords: 'recruitment, hiring, AI, talent acquisition, HireGenix, recruitment software, candidate matching, video interviews',
   icons: {
     icon: '/HireGenix-Symbol.jpg',
     apple: '/HireGenix-Symbol.jpg',
+  },
+  verification: {
+    google: 'google-site-verification-code', // Replace with actual verification code when available
+  },
+  authors: [
+    { name: 'HireGenix Team' }
+  ],
+  publisher: 'HireGenix',
+  formatDetection: {
+    email: true,
+    address: true,
+    telephone: true,
   },
 };
 
