@@ -44,7 +44,7 @@ export const ClientLogosSection: React.FC = () => {
     { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg', tier: 'Enterprise' },
     { name: 'Google', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg', tier: 'Enterprise' },
     { name: 'Salesforce', logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg', tier: 'Enterprise' },
-    { name: 'Adobe', logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/Adobe_Corporate_logo.svg', tier: 'Enterprise' },
+    { name: 'Adobe', logo: '/clients/adobe-logo.png', tier: 'Enterprise' },
     { name: 'Amazon', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg', tier: 'Enterprise' },
     { name: 'IBM', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg', tier: 'Enterprise' },
     { name: 'Slack', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Slack_Technologies_Logo.svg', tier: 'Growth' },
