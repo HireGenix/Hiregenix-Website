@@ -42,6 +42,7 @@ const footerLinks = [
       { name: 'Careers', href: '/careers' },
       { name: 'Blog', href: '/blog' },
       { name: 'Contact', href: '/contact' },
+      { name: 'Investor Relations', href: '/investor-relations' },
     ],
   },
   {
@@ -74,10 +75,10 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: <FacebookIcon />, href: 'https://facebook.com/hiregenix', label: 'Facebook', color: '#1877F2' },
-  { icon: <TwitterIcon />, href: 'https://twitter.com/hiregenix', label: 'Twitter', color: '#1DA1F2' },
-  { icon: <LinkedInIcon />, href: 'https://linkedin.com/company/hiregenix', label: 'LinkedIn', color: '#0A66C2' },
-  { icon: <InstagramIcon />, href: 'https://instagram.com/hiregenix', label: 'Instagram', color: '#E4405F' },
+  { icon: <FacebookIcon />, href: 'https://facebook.com/myhiregenix', label: 'Facebook', color: '#1877F2' },
+  { icon: <TwitterIcon />, href: 'https://twitter.com/myhiregenix', label: 'Twitter', color: '#1DA1F2' },
+  { icon: <LinkedInIcon />, href: 'https://www.linkedin.com/company/hiregenixai/', label: 'LinkedIn', color: '#0A66C2' },
+  { icon: <InstagramIcon />, href: 'https://instagram.com/hiregenixai', label: 'Instagram', color: '#E4405F' },
   { icon: <YouTubeIcon />, href: 'https://youtube.com/hiregenix', label: 'YouTube', color: '#FF0000' },
 ];
 

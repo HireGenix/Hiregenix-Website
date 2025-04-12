@@ -14,7 +14,16 @@ import {
   Grid,
   Divider,
   Paper,
-  CircularProgress
+  CircularProgress,
+  TextField,
+  InputAdornment,
+  Card,
+  CardContent,
+  CardMedia,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemAvatar
 } from '@mui/material';
 import { 
   Category as CategoryIcon,
@@ -23,22 +32,48 @@ import {
   ArrowBack as ArrowBackIcon,
   Share as ShareIcon,
   Bookmark as BookmarkIcon,
-  ThumbUp as ThumbUpIcon
+  ThumbUp as ThumbUpIcon,
+  Email as EmailIcon,
+  ArrowForward as ArrowForwardIcon,
+  TrendingUp as TrendingUpIcon
 } from '@mui/icons-material';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useParams } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
+import { Layout } from '@/components/Layout';
+import { SEOMetadata } from '@/components/SEO';
 
-// Styled components
+// Styled components for book-like layout
 const PostContainer = styled(Box)(({ theme }) => ({
   maxWidth: '800px',
   margin: '0 auto',
-  padding: theme.spacing(4),
-  background: alpha(theme.palette.background.paper, 0.7),
-  backdropFilter: 'blur(10px)',
-  borderRadius: 16,
-  boxShadow: `0 4px 30px ${alpha(theme.palette.common.black, 0.05)}`,
+  padding: theme.spacing(6, 8),
+  background: '#f8f5e9', // Cream color like book pages
+  boxShadow: `0 0 40px ${alpha(theme.palette.common.black, 0.15)}`,
+  borderRadius: '3px',
+  position: 'relative',
+  '&:before': { // Left page edge shadow
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '30px',
+    height: '100%',
+    background: 'linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0))',
+    borderRadius: '3px 0 0 3px',
+    zIndex: 1,
+  },
+  '&:after': { // Book binding effect
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '4px',
+    height: '100%',
+    background: theme.palette.primary.main,
+    borderRadius: '3px 0 0 3px',
+  }
 }));
 
 const FeaturedImage = styled(Box)(({ theme }) => ({
@@ -77,70 +112,152 @@ const MetaItem = styled(Box)(({ theme }) => ({
 }));
 
 const ContentContainer = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  fontFamily: '"Merriweather", "Georgia", serif', // Serif font for book-like text
+  columnCount: 1, // Single column layout for book-like appearance
+  columnGap: theme.spacing(6),
+  columnRuleColor: alpha(theme.palette.divider, 0.3),
+  columnRuleStyle: 'solid',
+  columnRuleWidth: '1px',
+  counterReset: 'page',
+  '&::after': { // Page number at the bottom
+    content: 'counter(page)',
+    counterIncrement: 'page',
+    position: 'absolute',
+    bottom: theme.spacing(-4),
+    right: '50%',
+    transform: 'translateX(50%)',
+    fontSize: '0.9rem',
+    color: theme.palette.text.secondary,
+    fontStyle: 'italic',
+    padding: theme.spacing(0.5, 1),
+    borderTop: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
+    width: '40px',
+    textAlign: 'center',
+  },
   '& p': {
     marginBottom: theme.spacing(2),
-    lineHeight: 1.7,
+    lineHeight: 1.8,
     fontSize: '1.1rem',
+    textAlign: 'justify',
+    textIndent: '1.5em', // First line indent like a book
+    hyphens: 'auto',
+    '&:first-of-type': {
+      textIndent: 0, // No indent for first paragraph
+      '&::first-letter': { // Drop cap for first paragraph
+        float: 'left',
+        fontSize: '3.5em',
+        lineHeight: '0.8',
+        paddingRight: '0.1em',
+        paddingTop: '0.1em',
+        color: theme.palette.primary.main,
+        fontFamily: '"Playfair Display", serif',
+      }
+    }
   },
   '& h1': {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(6),
+    marginBottom: theme.spacing(3),
     fontWeight: 800,
     fontSize: '2rem',
     color: theme.palette.primary.main,
+    fontFamily: '"Playfair Display", serif',
+    textAlign: 'center',
+    position: 'relative',
+    '&::after': { // Decorative line under chapter headings
+      content: '""',
+      position: 'absolute',
+      bottom: '-10px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '80px',
+      height: '2px',
+      background: theme.palette.primary.main,
+    }
   },
   '& h2': {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(3),
     fontWeight: 700,
     fontSize: '1.75rem',
     color: theme.palette.primary.main,
+    fontFamily: '"Playfair Display", serif',
+    breakBefore: 'avoid', // Avoid breaking before headings
   },
   '& h3': {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(1.5),
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(2),
     fontWeight: 600,
     fontSize: '1.5rem',
+    fontFamily: '"Playfair Display", serif',
+    fontStyle: 'italic',
+    breakBefore: 'avoid',
   },
   '& ul, & ol': {
-    marginBottom: theme.spacing(2),
-    paddingLeft: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    paddingLeft: theme.spacing(4),
   },
   '& li': {
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(1.5),
     fontSize: '1.1rem',
+    lineHeight: 1.7,
   },
   '& img': {
     maxWidth: '100%',
     height: 'auto',
-    borderRadius: 8,
-    marginBottom: theme.spacing(2),
+    borderRadius: 4,
+    marginBottom: theme.spacing(3),
+    boxShadow: `0 4px 12px ${alpha(theme.palette.common.black, 0.1)}`,
   },
   '& blockquote': {
     borderLeft: `4px solid ${theme.palette.primary.main}`,
-    paddingLeft: theme.spacing(2),
+    paddingLeft: theme.spacing(3),
     fontStyle: 'italic',
-    margin: theme.spacing(2, 0),
+    margin: theme.spacing(3, 0, 3, 2),
     color: theme.palette.text.secondary,
     fontSize: '1.2rem',
+    position: 'relative',
+    '&::before': { // Quotation mark
+      content: '"\\201C"', // Opening quotation mark
+      position: 'absolute',
+      top: '-20px',
+      left: '-10px',
+      fontSize: '3rem',
+      color: alpha(theme.palette.primary.main, 0.2),
+      fontFamily: 'Georgia, serif',
+    }
   },
   '& code': {
-    fontFamily: 'monospace',
+    fontFamily: '"Courier New", monospace',
     backgroundColor: alpha(theme.palette.primary.main, 0.1),
     padding: theme.spacing(0.5, 1),
     borderRadius: 4,
+    fontSize: '0.9rem',
   },
   '& pre': {
     backgroundColor: alpha(theme.palette.common.black, 0.05),
-    padding: theme.spacing(2),
-    borderRadius: 8,
+    padding: theme.spacing(3),
+    borderRadius: 4,
     overflowX: 'auto',
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(3),
+    border: `1px solid ${alpha(theme.palette.divider, 0.2)}`,
     '& code': {
       backgroundColor: 'transparent',
       padding: 0,
+      fontSize: '0.9rem',
+      lineHeight: 1.6,
     },
   },
+  // Chapter styling
+  '& .chapter': {
+    breakBefore: 'page',
+    paddingTop: theme.spacing(6),
+    '& h2': {
+      textAlign: 'center',
+      fontSize: '1.8rem',
+      marginBottom: theme.spacing(4),
+    }
+  }
 }));
 
 const SocialButton = styled(Button)(({ theme }) => ({
@@ -174,6 +291,32 @@ const LoadingContainer = styled(Box)(({ theme }) => ({
   minHeight: '50vh',
 }));
 
+// Sidebar components
+const SidebarContainer = styled(Box)(({ theme }) => ({
+  position: 'sticky',
+  top: 100,
+  padding: theme.spacing(3),
+  borderRadius: 16,
+  backgroundColor: alpha(theme.palette.background.paper, 0.7),
+  backdropFilter: 'blur(10px)',
+  boxShadow: `0 4px 30px ${alpha(theme.palette.common.black, 0.05)}`,
+}));
+
+const NewsletterForm = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(3),
+  borderRadius: 12,
+  backgroundColor: alpha(theme.palette.primary.main, 0.05),
+  marginBottom: theme.spacing(4),
+}));
+
+const PopularPostItem = styled(ListItem)(({ theme }) => ({
+  padding: theme.spacing(1.5, 0),
+  borderBottom: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
+  '&:last-child': {
+    borderBottom: 'none',
+  },
+}));
+
 export default function BlogPostPage() {
   const theme = useTheme();
   const params = useParams();
@@ -183,6 +326,7 @@ export default function BlogPostPage() {
   const [relatedPosts, setRelatedPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [email, setEmail] = useState('');
 
   // Fetch post data
   useEffect(() => {
@@ -259,6 +403,15 @@ export default function BlogPostPage() {
     return placeholders[index % placeholders.length];
   };
 
+  // Handle newsletter subscription
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In a real app, you would send this to your API
+    console.log('Subscribing email:', email);
+    setEmail('');
+    // Show success message
+  };
+
   if (loading) {
     return (
       <LoadingContainer>
@@ -300,8 +453,15 @@ export default function BlogPostPage() {
     keywords: post.category?.name || 'blog, recruitment, hiring, HR technology',
   };
 
+  // Use only actual related posts for the sidebar
+  const popularPosts = [...relatedPosts];
+  
+  // If we have no related posts, don't show the popular posts section
+  const showPopularPosts = popularPosts.length > 0;
+
   return (
-      
+    <Layout>
+      <SEOMetadata seoData={seoData} />
       <Box 
         component={motion.div}
         initial={{ opacity: 0 }}
@@ -329,219 +489,337 @@ export default function BlogPostPage() {
             Back to Blog
           </Button>
           
-          <PostContainer>
-            <FeaturedImage>
-              <img 
-                src={post.featuredImage || getPlaceholderImage(0)} 
-                alt={post.title} 
-              />
-              <Box
-                sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%)',
-                  zIndex: 1
-                }}
-              />
-              {post.category && (
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    bottom: 20,
-                    left: 20,
-                    zIndex: 2
-                  }}
-                >
-                  <CategoryChip 
-                    icon={<CategoryIcon />} 
-                    label={post.category.name} 
-                    size="medium"
-                    sx={{ 
-                      bgcolor: alpha(theme.palette.primary.main, 0.8),
-                      color: 'white',
-                      border: 'none',
-                      boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
+          <Grid container spacing={4}>
+            {/* Main Content */}
+            <Grid item xs={12} md={8}>
+              <PostContainer>
+                <FeaturedImage>
+                  <img 
+                    src={post.featuredImage || getPlaceholderImage(0)} 
+                    alt={post.title} 
+                  />
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%)',
+                      zIndex: 1
                     }}
                   />
+                  {post.category && (
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        bottom: 20,
+                        left: 20,
+                        zIndex: 2
+                      }}
+                    >
+                      <CategoryChip 
+                        icon={<CategoryIcon />} 
+                        label={post.category.name} 
+                        size="medium"
+                        sx={{ 
+                          bgcolor: alpha(theme.palette.primary.main, 0.8),
+                          color: 'white',
+                          border: 'none',
+                          boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
+                        }}
+                      />
+                    </Box>
+                  )}
+                </FeaturedImage>
+                
+                {/* Post Header */}
+                <Box sx={{ mb: 4 }}>
+                  <Typography 
+                    variant="h3" 
+                    component="h1" 
+                    gutterBottom
+                    fontWeight={700}
+                    sx={{ 
+                      fontSize: { xs: '2rem', md: '2.5rem' },
+                      background: `linear-gradient(90deg, ${theme.palette.text.primary} 0%, ${theme.palette.primary.main} 100%)`,
+                      backgroundClip: 'text',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                    }}
+                  >
+                    {post.title}
+                  </Typography>
+                  
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                      <Avatar 
+                        src={post.author?.image || '/avatars/avatar1.jpg'} 
+                        alt={post.author?.name || 'Author'}
+                        sx={{ width: 48, height: 48 }}
+                      />
+                      <Box>
+                        <Typography variant="subtitle1" fontWeight={600}>
+                          {post.author?.name || 'Unknown Author'}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {post.author?.role || 'Contributor'}
+                        </Typography>
+                      </Box>
+                    </Box>
+                    
+                    <Box sx={{ display: 'flex', gap: 1 }}>
+                      <SocialButton color="primary">
+                        <ShareIcon fontSize="small" />
+                      </SocialButton>
+                      <SocialButton color="primary">
+                        <BookmarkIcon fontSize="small" />
+                      </SocialButton>
+                      <SocialButton color="primary">
+                        <ThumbUpIcon fontSize="small" />
+                      </SocialButton>
+                    </Box>
+                  </Box>
+                  
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, mb: 3 }}>
+                    <MetaItem>
+                      <CalendarIcon fontSize="small" />
+                      <Typography variant="body2">
+                        {formatDate(post.createdAt)}
+                      </Typography>
+                    </MetaItem>
+                    
+                    <MetaItem>
+                      <PersonIcon fontSize="small" />
+                      <Typography variant="body2">
+                        {readTime}
+                      </Typography>
+                    </MetaItem>
+                  </Box>
+                  
+                  <Typography 
+                    variant="subtitle1" 
+                    sx={{ 
+                      fontStyle: 'italic',
+                      color: theme.palette.text.secondary,
+                      mb: 3,
+                      fontSize: '1.2rem',
+                      lineHeight: 1.6
+                    }}
+                  >
+                    {post.excerpt}
+                  </Typography>
+                  
+                  <Divider sx={{ mb: 4 }} />
                 </Box>
-              )}
-            </FeaturedImage>
-            
-            {/* Post Header */}
-            <Box sx={{ mb: 4 }}>
-              <Typography 
-                variant="h3" 
-                component="h1" 
-                gutterBottom
-                fontWeight={700}
-                sx={{ 
-                  fontSize: { xs: '2rem', md: '2.5rem' },
-                  background: `linear-gradient(90deg, ${theme.palette.text.primary} 0%, ${theme.palette.primary.main} 100%)`,
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
-                {post.title}
-              </Typography>
-              
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                
+                {/* Post Content */}
+                <ContentContainer
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
+
+                {/* Author Bio */}
+                <Box 
+                  sx={{ 
+                    mt: 6, 
+                    p: 3, 
+                    borderRadius: 4, 
+                    bgcolor: alpha(theme.palette.primary.light, 0.05),
+                    border: `1px solid ${alpha(theme.palette.primary.light, 0.1)}`,
+                    display: 'flex',
+                    gap: 3,
+                    alignItems: 'center'
+                  }}
+                >
                   <Avatar 
                     src={post.author?.image || '/avatars/avatar1.jpg'} 
                     alt={post.author?.name || 'Author'}
-                    sx={{ width: 48, height: 48 }}
+                    sx={{ width: 80, height: 80 }}
                   />
                   <Box>
-                    <Typography variant="subtitle1" fontWeight={600}>
-                      {post.author?.name || 'Unknown Author'}
+                    <Typography variant="h6" fontWeight={600} gutterBottom>
+                      About {post.author?.name || 'the Author'}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {post.author?.role || 'Contributor'}
+                    <Typography variant="body2">
+                      {post.author?.bio || `${post.author?.name || 'This author'} is a contributor at HireGenix, sharing insights on recruitment technology and best practices.`}
                     </Typography>
                   </Box>
                 </Box>
-                
-                <Box sx={{ display: 'flex', gap: 1 }}>
-                  <SocialButton color="primary">
-                    <ShareIcon fontSize="small" />
-                  </SocialButton>
-                  <SocialButton color="primary">
-                    <BookmarkIcon fontSize="small" />
-                  </SocialButton>
-                  <SocialButton color="primary">
-                    <ThumbUpIcon fontSize="small" />
-                  </SocialButton>
-                </Box>
-              </Box>
-              
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, mb: 3 }}>
-                <MetaItem>
-                  <CalendarIcon fontSize="small" />
-                  <Typography variant="body2">
-                    {formatDate(post.createdAt)}
-                  </Typography>
-                </MetaItem>
-                
-                <MetaItem>
-                  <PersonIcon fontSize="small" />
-                  <Typography variant="body2">
-                    {readTime}
-                  </Typography>
-                </MetaItem>
-              </Box>
-              
-              <Typography 
-                variant="subtitle1" 
-                sx={{ 
-                  fontStyle: 'italic',
-                  color: theme.palette.text.secondary,
-                  mb: 3,
-                  fontSize: '1.2rem',
-                  lineHeight: 1.6
-                }}
-              >
-                {post.excerpt}
-              </Typography>
-              
-              <Divider sx={{ mb: 4 }} />
-            </Box>
-            
-            {/* Post Content */}
-            <ContentContainer
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
 
-            {/* Author Bio */}
-            <Box 
-              sx={{ 
-                mt: 6, 
-                p: 3, 
-                borderRadius: 4, 
-                bgcolor: alpha(theme.palette.primary.light, 0.05),
-                border: `1px solid ${alpha(theme.palette.primary.light, 0.1)}`,
-                display: 'flex',
-                gap: 3,
-                alignItems: 'center'
-              }}
-            >
-              <Avatar 
-                src={post.author?.image || '/avatars/avatar1.jpg'} 
-                alt={post.author?.name || 'Author'}
-                sx={{ width: 80, height: 80 }}
-              />
-              <Box>
-                <Typography variant="h6" fontWeight={600} gutterBottom>
-                  About {post.author?.name || 'the Author'}
-                </Typography>
-                <Typography variant="body2">
-                  {post.author?.bio || `${post.author?.name || 'This author'} is a contributor at HireGenix, sharing insights on recruitment technology and best practices.`}
-                </Typography>
-              </Box>
-            </Box>
-
-            {/* Related Posts */}
-            {relatedPosts.length > 0 && (
-              <Box sx={{ mt: 8 }}>
-                <Typography variant="h5" fontWeight={700} gutterBottom>
-                  Related Articles
-                </Typography>
-                <Grid container spacing={3} sx={{ mt: 2 }}>
-                  {relatedPosts.map((relatedPost, index) => (
-                    <Grid item xs={12} sm={6} key={relatedPost.id}>
-                      <RelatedPostCard elevation={1}>
-                        <Box sx={{ position: 'relative', paddingTop: '56.25%' }}>
-                          <Box
-                            component="img"
-                            src={relatedPost.featuredImage || getPlaceholderImage(index)}
-                            alt={relatedPost.title}
-                            sx={{
-                              position: 'absolute',
-                              top: 0,
-                              left: 0,
-                              width: '100%',
-                              height: '100%',
-                              objectFit: 'cover'
-                            }}
-                          />
-                          {relatedPost.category && (
-                            <Chip
-                              label={relatedPost.category.name}
-                              size="small"
-                              sx={{
-                                position: 'absolute',
-                                top: 12,
-                                left: 12,
-                                fontWeight: 600,
-                                background: alpha(theme.palette.primary.main, 0.9),
-                                color: 'white',
-                                backdropFilter: 'blur(4px)',
-                                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)'
-                              }}
-                            />
-                          )}
-                        </Box>
-                        <Box sx={{ p: 2 }}>
-                          <Link href={`/blog/${relatedPost.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                            <Typography variant="h6" fontWeight={600} gutterBottom>
-                              {relatedPost.title}
-                            </Typography>
-                          </Link>
-                          <Typography variant="body2" color="text.secondary">
-                            {relatedPost.excerpt}
-                          </Typography>
-                        </Box>
-                      </RelatedPostCard>
+                {/* Related Posts */}
+                {relatedPosts.length > 0 && (
+                  <Box sx={{ mt: 8 }}>
+                    <Typography variant="h5" fontWeight={700} gutterBottom>
+                      Related Articles
+                    </Typography>
+                    <Grid container spacing={3} sx={{ mt: 2 }}>
+                      {relatedPosts.map((relatedPost, index) => (
+                        <Grid item xs={12} sm={6} key={relatedPost.id}>
+                          <RelatedPostCard elevation={1}>
+                            <Box sx={{ position: 'relative', paddingTop: '56.25%' }}>
+                              <Box
+                                component="img"
+                                src={relatedPost.featuredImage || getPlaceholderImage(index)}
+                                alt={relatedPost.title}
+                                sx={{
+                                  position: 'absolute',
+                                  top: 0,
+                                  left: 0,
+                                  width: '100%',
+                                  height: '100%',
+                                  objectFit: 'cover'
+                                }}
+                              />
+                              {relatedPost.category && (
+                                <Chip
+                                  label={relatedPost.category.name}
+                                  size="small"
+                                  sx={{
+                                    position: 'absolute',
+                                    top: 12,
+                                    left: 12,
+                                    fontWeight: 600,
+                                    background: alpha(theme.palette.primary.main, 0.9),
+                                    color: 'white',
+                                    backdropFilter: 'blur(4px)',
+                                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)'
+                                  }}
+                                />
+                              )}
+                            </Box>
+                            <Box sx={{ p: 2 }}>
+                              <Link href={`/blog/${relatedPost.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Typography variant="h6" fontWeight={600} gutterBottom>
+                                  {relatedPost.title}
+                                </Typography>
+                              </Link>
+                              <Typography variant="body2" color="text.secondary">
+                                {relatedPost.excerpt}
+                              </Typography>
+                            </Box>
+                          </RelatedPostCard>
+                        </Grid>
+                      ))}
                     </Grid>
-                  ))}
-                </Grid>
-              </Box>
-            )}
-          </PostContainer>
+                  </Box>
+                )}
+              </PostContainer>
+            </Grid>
+            
+            {/* Sidebar */}
+            <Grid item xs={12} md={4}>
+              <SidebarContainer>
+                {/* Newsletter Signup */}
+                <NewsletterForm as="form" onSubmit={handleSubscribe}>
+                  <Typography variant="h6" fontWeight={700} gutterBottom>
+                    Subscribe to Our Newsletter
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+                    Get the latest recruitment insights and tips delivered to your inbox.
+                  </Typography>
+                  
+                  <TextField
+                    fullWidth
+                    placeholder="Your email address"
+                    variant="outlined"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <EmailIcon color="primary" />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    endIcon={<ArrowForwardIcon />}
+                    sx={{
+                      py: 1.5,
+                      borderRadius: 2,
+                      fontWeight: 600,
+                    }}
+                  >
+                    Subscribe
+                  </Button>
+                </NewsletterForm>
+                
+                {/* Popular Posts - only shown if there are actual related posts */}
+                {showPopularPosts && (
+                  <Box sx={{ mb: 4 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                      <TrendingUpIcon color="primary" sx={{ mr: 1 }} />
+                      <Typography variant="h6" fontWeight={700}>
+                        Related Articles
+                      </Typography>
+                    </Box>
+                    
+                    <List disablePadding>
+                      {popularPosts.map((popularPost, index) => (
+                        <PopularPostItem key={popularPost.id} disableGutters>
+                          <ListItemAvatar>
+                            <Avatar
+                              variant="rounded"
+                              src={popularPost.featuredImage || getPlaceholderImage(index)}
+                              sx={{ width: 60, height: 60, borderRadius: 2 }}
+                            />
+                          </ListItemAvatar>
+                          <ListItemText
+                            primary={
+                              <Link href={`/blog/${popularPost.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Typography variant="subtitle2" fontWeight={600} sx={{ mb: 0.5 }}>
+                                  {popularPost.title}
+                                </Typography>
+                              </Link>
+                            }
+                            secondary={
+                              <Typography variant="caption" color="text.secondary">
+                                {formatDate(popularPost.createdAt)}
+                              </Typography>
+                            }
+                          />
+                        </PopularPostItem>
+                      ))}
+                    </List>
+                  </Box>
+                )}
+                
+                {/* Categories */}
+                <Box>
+                  <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
+                    Categories
+                  </Typography>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                    {['Recruitment', 'AI Technology', 'Hiring Tips', 'HR Tech', 'Interviews', 'Career Advice'].map((category) => (
+                      <Chip
+                        key={category}
+                        label={category}
+                        component={Link}
+                        href={`/blog?category=${category.toLowerCase().replace(' ', '-')}`}
+                        clickable
+                        sx={{
+                          borderRadius: 2,
+                          fontWeight: 500,
+                          mb: 1,
+                          '&:hover': {
+                            backgroundColor: alpha(theme.palette.primary.main, 0.1),
+                          },
+                        }}
+                      />
+                    ))}
+                  </Box>
+                </Box>
+              </SidebarContainer>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
+    </Layout>
   );
 }

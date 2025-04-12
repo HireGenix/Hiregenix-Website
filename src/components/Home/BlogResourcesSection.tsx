@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -15,7 +15,8 @@ import {
   CardContent,
   CardMedia,
   CardActionArea,
-  Avatar
+  Avatar,
+  CircularProgress
 } from '@mui/material';
 import {
   ArrowForward as ArrowForwardIcon,
@@ -51,45 +52,82 @@ export const BlogResourcesSection: React.FC = () => {
     }
   };
 
-  // Blog posts data
-  const blogPosts = [
-    {
-      title: '5 Ways AI is Transforming the Recruitment Process',
-      excerpt: 'Discover how artificial intelligence is revolutionizing how companies find and hire top talent, from automated screening to predictive analytics.',
-      image: '/blog/5 Ways AI is Transforming the Recruitment Process.png',
-      category: 'AI & Technology',
-      date: 'Mar 15, 2025',
-      author: {
-        name: 'HireGenix Admin',
-        avatar: '/avatars/avatar1.jpg'
-      },
-      slug: '5-ways-ai-is-transforming-the-recruitment-process'
-    },
-    {
-      title: 'The Future of Skills Assessment: Beyond Traditional Testing',
-      excerpt: 'Learn how modern skills assessment techniques are providing deeper insights into candidate capabilities than ever before.',
-      image: '/blog/The Future of Skills Assessment: Beyond Traditional Testing.png',
-      category: 'Tutorials',
-      date: 'Mar 10, 2025',
-      author: {
-        name: 'HireGenix Admin',
-        avatar: '/avatars/avatar1.jpg'
-      },
-      slug: 'the-future-of-skills-assessment-beyond-traditional-testing'
-    },
-    {
-      title: 'Building Diverse Teams: How Technology Can Help',
-      excerpt: 'Explore how recruitment technology can be leveraged to create more diverse and inclusive workplaces.',
-      image: '/blog/Building Diverse Teams: How Technology Can Help.png',
-      category: 'Diversity & Inclusion',
-      date: 'Mar 22, 2025',
-      author: {
-        name: 'HireGenix Admin',
-        avatar: '/avatars/avatar1.jpg'
-      },
-      slug: 'building-diverse-teams-how-technology-can-help'
-    }
-  ];
+  // Define types for blog post
+  interface BlogPost {
+    title: string;
+    excerpt: string;
+    image: string;
+    category: string;
+    date: string;
+    author: {
+      name: string;
+      avatar: string;
+    };
+    slug: string;
+  }
+
+  // State for blog posts
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch blog posts from API
+  useEffect(() => {
+    const fetchBlogPosts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        // Fetch posts from API with limit=3 to get only the latest 3 posts
+        const response = await fetch('/api/posts?limit=3');
+        
+        if (!response.ok) {
+          throw new Error(`Error fetching posts: ${response.status} ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.items && Array.isArray(data.items)) {
+          // Transform API data to match the component's expected format
+          const formattedPosts = data.items.map((post: any) => ({
+            title: post.title,
+            excerpt: post.excerpt,
+            image: post.featuredImage,
+            category: post.category?.name || 'Uncategorized',
+            date: formatDate(post.createdAt),
+            author: {
+              name: post.author?.name || 'HireGenix Admin',
+              avatar: post.author?.image || '/avatars/avatar1.jpg'
+            },
+            slug: post.slug
+          }));
+          
+          setBlogPosts(formattedPosts);
+        } else {
+          setBlogPosts([]);
+          console.warn('Unexpected API response format:', data);
+        }
+      } catch (error) {
+        console.error('Error fetching blog posts:', error);
+        setError('Failed to load blog posts');
+        setBlogPosts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogPosts();
+  }, []);
+
+  // Format date helper function
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+  };
 
   // Resources data
   const resources = [
@@ -223,14 +261,28 @@ export const BlogResourcesSection: React.FC = () => {
             </Button>
           </Box>
 
-          <motion.div
-            variants={containerVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <Grid container spacing={4}>
-              {blogPosts.map((post, index) => (
+          {loading ? (
+            <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
+              <CircularProgress size={60} color="primary" />
+            </Box>
+          ) : error ? (
+            <Box sx={{ textAlign: 'center', py: 8 }}>
+              <Typography variant="h6" color="error" gutterBottom>
+                {error}
+              </Typography>
+              <Typography variant="body1">
+                Please try refreshing the page or check back later.
+              </Typography>
+            </Box>
+          ) : (
+            <motion.div
+              variants={containerVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <Grid container spacing={4}>
+                {blogPosts.map((post, index) => (
                 <Grid item xs={12} md={4} key={index}>
                   <motion.div variants={itemVariant}>
                     <Card
@@ -349,8 +401,9 @@ export const BlogResourcesSection: React.FC = () => {
                   </motion.div>
                 </Grid>
               ))}
-            </Grid>
-          </motion.div>
+              </Grid>
+            </motion.div>
+          )}
         </Box>
 
         {/* Resources Section */}

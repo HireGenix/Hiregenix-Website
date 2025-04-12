@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Box, 
   Typography, 
@@ -39,6 +39,7 @@ import {
   Comment as CommentIcon,
   Share as ShareIcon,
   ContentCopy as ContentCopyIcon,
+  Upload as UploadIcon,
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -164,9 +165,11 @@ const categoryColors: Record<string, string> = {
 export default function PostsPage() {
   const router = useRouter();
   const theme = useTheme();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [posts, setPosts] = useState<Post[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -303,13 +306,36 @@ export default function PostsPage() {
     try {
       setIsDeleting(true);
       
+      console.log('Deleting post with ID:', id);
+      
       const response = await fetch(`/api/posts/${id}`, {
         method: 'DELETE',
       });
       
       if (!response.ok) {
-        throw new Error(`Error deleting post: ${response.status} ${response.statusText}`);
+        let errorMessage = `Error deleting post: ${response.status} ${response.statusText}`;
+        try {
+          const errorText = await response.text();
+          console.error('Error response from delete API:', errorText);
+          if (errorText) {
+            try {
+              const parsedError = JSON.parse(errorText);
+              if (parsedError.error) {
+                errorMessage = parsedError.error;
+              }
+            } catch (e) {
+              // If we can't parse the error as JSON, use the raw text
+              errorMessage = errorText;
+            }
+          }
+        } catch (e) {
+          console.error('Error reading delete error response:', e);
+        }
+        throw new Error(errorMessage);
       }
+      
+      const result = await response.json();
+      console.log('Delete response:', result);
       
       // Filter out the deleted post
       const updatedPosts = posts.filter(post => post.id !== id);
@@ -333,7 +359,7 @@ export default function PostsPage() {
       handleMenuClose();
     } catch (error) {
       console.error('Error deleting post:', error);
-      setSnackbarMessage('Failed to delete post. Please try again.');
+      setSnackbarMessage(error instanceof Error ? error.message : 'Failed to delete post. Please try again.');
       setSnackbarSeverity('error');
       setSnackbarOpen(true);
     } finally {
@@ -353,6 +379,173 @@ export default function PostsPage() {
     setSelectedPostId(null);
   };
 
+  // Handle file upload
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    console.log('File selected:', file.name, 'Type:', file.type, 'Size:', file.size);
+    
+    try {
+      setUploading(true);
+      
+      // Create form data
+      const formData = new FormData();
+      formData.append('file', file);
+      
+      console.log('Sending file to API...');
+      
+      // First, check if the file type is supported
+      const fileType = file.type;
+      const isDocx = fileType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+      const isDoc = fileType === 'application/msword';
+      const isPdf = fileType === 'application/pdf';
+      
+      if (!isDocx && !isDoc && !isPdf) {
+        throw new Error('Unsupported file type. Only .docx, .doc, and .pdf files are supported');
+      }
+      
+      // Send file to API with explicit content type header
+      const response = await fetch('/api/documents', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      console.log('API response status:', response.status);
+      
+      // Handle non-OK responses
+      if (!response.ok) {
+        let errorMessage = `Failed to process document: ${response.status} ${response.statusText}`;
+        try {
+          const errorData = await response.text();
+          console.error('Error response from documents API:', errorData);
+          if (errorData) {
+            try {
+              const parsedError = JSON.parse(errorData);
+              if (parsedError.error) {
+                errorMessage = parsedError.error;
+              }
+            } catch (e) {
+              // If we can't parse the error as JSON, use the raw text
+              errorMessage = errorData;
+            }
+          }
+        } catch (e) {
+          console.error('Error reading error response:', e);
+        }
+        throw new Error(errorMessage);
+      }
+      
+      // Get response as text first
+      const responseText = await response.text();
+      console.log('API response text length:', responseText.length);
+      
+      // Try to parse as JSON
+      let data;
+      try {
+        data = JSON.parse(responseText);
+        console.log('Parsed data successfully');
+      } catch (parseError) {
+        console.error('Error parsing JSON response:', parseError);
+        console.error('Response text preview:', responseText.substring(0, 200));
+        throw new Error('Invalid response format from document API');
+      }
+      
+      // Check if the response has the expected structure
+      if (!data || typeof data !== 'object') {
+        console.error('Unexpected response format:', data);
+        throw new Error('Invalid response format from document API');
+      }
+      
+      if (data.success) {
+        console.log('Document processed successfully, creating post...');
+        
+        // Create a new post with the document content
+        const postData = {
+          title: data.title || 'Untitled Document',
+          content: data.content,
+          excerpt: data.excerpt || '',
+          slug: data.title ? data.title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-') : 'untitled-document',
+          status: 'DRAFT',
+          // For mock data, we don't need to provide authorId
+          // The API will use a default author
+          seo: {
+            title: `${data.title || 'Untitled Document'} | HireGenix Blog`,
+            description: data.excerpt || '',
+            keywords: '',
+            ogImage: '',
+            noIndex: false,
+          },
+        };
+        
+        console.log('Post data prepared');
+        
+        try {
+          // Send POST request to create post
+          const postResponse = await fetch('/api/posts', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData),
+          });
+          
+          console.log('Post API response status:', postResponse.status);
+          
+          if (postResponse.ok) {
+            // Show success message
+            setSnackbarMessage('Document uploaded and post created successfully');
+            setSnackbarSeverity('success');
+            setSnackbarOpen(true);
+            
+            // Refresh posts list
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500);
+          } else {
+            let errorMessage = `Failed to create post: ${postResponse.status} ${postResponse.statusText}`;
+            try {
+              const errorText = await postResponse.text();
+              console.error('Error response from posts API:', errorText);
+              if (errorText) {
+                try {
+                  const parsedError = JSON.parse(errorText);
+                  if (parsedError.error) {
+                    errorMessage = parsedError.error;
+                  }
+                } catch (e) {
+                  // If we can't parse the error as JSON, use the raw text
+                  errorMessage = errorText;
+                }
+              }
+            } catch (e) {
+              console.error('Error reading post error response:', e);
+            }
+            throw new Error(errorMessage);
+          }
+        } catch (postError) {
+          console.error('Error creating post:', postError);
+          throw new Error(postError instanceof Error ? postError.message : 'Failed to create post from document');
+        }
+      } else {
+        console.error('Document processing failed, data:', data);
+        throw new Error(data.error || 'Document processing failed');
+      }
+    } catch (error) {
+      console.error('Error uploading document:', error);
+      setSnackbarMessage(error instanceof Error ? error.message : 'Failed to upload document');
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+    } finally {
+      setUploading(false);
+      
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  };
+  
   // Format date for display
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -382,24 +575,46 @@ export default function PostsPage() {
             </Typography>
           </Box>
         </Box>
-        <Button 
-          variant="contained" 
-          startIcon={<AddIcon />}
-          component={Link}
-          href="/admin/posts/create"
-          sx={{ 
-            borderRadius: 2,
-            px: 3,
-            py: 1,
-            bgcolor: theme.palette.secondary.main,
-            boxShadow: `0 4px 14px ${alpha(theme.palette.secondary.main, 0.3)}`,
-            '&:hover': {
-              bgcolor: theme.palette.secondary.dark,
-            }
-          }}
-        >
-          New Post
-        </Button>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button 
+            variant="outlined" 
+            startIcon={<UploadIcon />}
+            onClick={() => fileInputRef.current?.click()}
+            disabled={uploading}
+            sx={{ 
+              borderRadius: 2,
+              px: 3,
+              py: 1,
+            }}
+          >
+            {uploading ? 'Uploading...' : 'Upload Document'}
+          </Button>
+          <Button 
+            variant="contained" 
+            startIcon={<AddIcon />}
+            component={Link}
+            href="/admin/posts/create"
+            sx={{ 
+              borderRadius: 2,
+              px: 3,
+              py: 1,
+              bgcolor: theme.palette.secondary.main,
+              boxShadow: `0 4px 14px ${alpha(theme.palette.secondary.main, 0.3)}`,
+              '&:hover': {
+                bgcolor: theme.palette.secondary.dark,
+              }
+            }}
+          >
+            New Post
+          </Button>
+          <input
+            type="file"
+            accept=".doc,.docx,.pdf"
+            style={{ display: 'none' }}
+            ref={fileInputRef}
+            onChange={handleFileUpload}
+          />
+        </Box>
       </Box>
 
       <WidgetCard>

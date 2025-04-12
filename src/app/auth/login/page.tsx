@@ -20,7 +20,13 @@ import Link from 'next/link';
 function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl') || '/admin';
+  // Fix for incorrect callback URLs that contain "login"
+  let callbackUrl = searchParams.get('callbackUrl') || '/admin';
+  
+  // If the callback URL contains "/admin/login", redirect to "/admin" instead
+  if (callbackUrl.includes('/admin/login')) {
+    callbackUrl = '/admin';
+  }
   const error = searchParams.get('error');
 
   const [email, setEmail] = useState('');
