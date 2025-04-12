@@ -6,13 +6,17 @@ import { mockPosts } from '../mock-data';
 // Set to false to use the database
 const USE_MOCK_DATA = true;
 
+// Helper function to extract ID from the URL path
+function extractIdFromPath(request: NextRequest): string {
+  const pathname = request.nextUrl.pathname;
+  const segments = pathname.split('/');
+  return segments[segments.length - 1];
+}
+
 // GET /api/posts/:id - Get a specific post
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(request: NextRequest) {
   try {
-    const id = params.id;
+    const id = extractIdFromPath(request);
     
     if (USE_MOCK_DATA) {
       // Find post in mock data
@@ -63,12 +67,9 @@ export async function GET(
 }
 
 // PUT /api/posts/:id - Update a post
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(request: NextRequest) {
   try {
-    const id = params.id;
+    const id = extractIdFromPath(request);
     const body = await request.json();
     
     if (USE_MOCK_DATA) {
@@ -184,12 +185,9 @@ export async function PUT(
 }
 
 // DELETE /api/posts/:id - Delete a post
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: NextRequest) {
   try {
-    const id = params.id;
+    const id = extractIdFromPath(request);
     console.log('Deleting post with ID:', id);
     
     if (USE_MOCK_DATA) {
