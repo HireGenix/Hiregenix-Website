@@ -79,7 +79,7 @@ const socialLinks = [
   { icon: <TwitterIcon />, href: 'https://twitter.com/myhiregenix', label: 'Twitter', color: '#1DA1F2' },
   { icon: <LinkedInIcon />, href: 'https://www.linkedin.com/company/hiregenixai/', label: 'LinkedIn', color: '#0A66C2' },
   { icon: <InstagramIcon />, href: 'https://instagram.com/hiregenixai', label: 'Instagram', color: '#E4405F' },
-  { icon: <YouTubeIcon />, href: 'https://youtube.com/hiregenix', label: 'YouTube', color: '#FF0000' },
+  { icon: <YouTubeIcon />, href: 'https://www.youtube.com/@TrayarunyaVentures', label: 'YouTube', color: '#FF0000' },
 ];
 
 const contactInfo = [
