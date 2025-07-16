@@ -8,14 +8,14 @@ const nextConfig = {
   serverExternalPackages: ['@prisma/client'],
   experimental: {
     optimizeCss: true,
-    turbo: {
-      loaders: {
-        '.svg': ['@svgr/webpack'],
-      },
-      rules: {
-        // Enable turbopack for specific file types
-        '*.svg': ['@svgr/webpack'],
-      },
+  },
+  turbopack: {
+    loaders: {
+      '.svg': ['@svgr/webpack'],
+    },
+    rules: {
+      // Enable turbopack for specific file types
+      '*.svg': ['@svgr/webpack'],
     },
   },
   // Enable bundle analyzer if ANALYZE is set

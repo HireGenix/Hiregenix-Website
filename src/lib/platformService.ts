@@ -199,10 +199,12 @@ export async function applyForJob(jobId: string, applicationData: any): Promise<
   }
 }
 
-export default {
+const platformService = {
   fetchJobs,
   fetchJobById,
   fetchCompanies,
   fetchCompanyById,
   applyForJob
 };
+
+export default platformService;
