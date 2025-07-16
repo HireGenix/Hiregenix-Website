@@ -1,4 +1,4 @@
-import { PrismaClient, Status } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
@@ -223,7 +223,7 @@ AI is transforming recruitment from a largely intuitive process to a data-driven
 
 Organizations that embrace these technologies now will gain a significant competitive advantage in attracting and retaining top talent. As the technology continues to mature, AI will become not just a nice-to-have but an essential component of effective recruitment strategies.`,
           featuredImage: '/blog/5 Ways AI is Transforming the Recruitment Process.png',
-          status: 'PUBLISHED' as Status,
+          status: 'PUBLISHED',
           authorId: adminUser.id,
           categoryId: aiRecruitmentCategory.id,
           createdAt: new Date('2025-03-15T10:00:00Z'),
@@ -309,7 +309,7 @@ The future of skills assessment is multidimensional, continuous, and increasingl
 
 As these technologies continue to evolve, they promise to create more meritocratic hiring processes that identify the best talent regardless of background, while providing candidates with valuable insights about their own strengths and growth opportunities.`,
           featuredImage: '/blog/The Future of Skills Assessment: Beyond Traditional Testing.png',
-          status: 'PUBLISHED' as Status,
+          status: 'PUBLISHED',
           authorId: adminUser.id,
           categoryId: skillsAssessmentCategory.id,
           createdAt: new Date('2025-03-10T14:30:00Z'),
@@ -407,7 +407,7 @@ Technology is not a silver bullet for building diverse teams, but it can be a po
 
 As these technologies continue to evolve, they promise to make diversity and inclusion efforts more data-driven, consistent, and effective—helping organizations build teams that reflect the full spectrum of talent available and create workplaces where everyone can thrive.`,
           featuredImage: '/blog/Building Diverse Teams: How Technology Can Help.png',
-          status: 'PUBLISHED' as Status,
+          status: 'PUBLISHED',
           authorId: adminUser.id,
           categoryId: diversityCategory.id,
           createdAt: new Date('2025-03-05T09:15:00Z'),
