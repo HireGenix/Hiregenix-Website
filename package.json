@@ -47,7 +47,7 @@
     "mammoth": "^1.9.0",
     "mongodb": "^6.15.0",
     "multer": "^1.4.5-lts.2",
-    "next": "^15.4.3",
+    "next": "^15.3.0",
     "next-auth": "^4.24.11",
     "nodemailer": "^6.10.0",
     "pdf-lib": "^1.17.1",
