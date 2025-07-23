@@ -1,0 +1,12 @@
+# www.robotstxt.org/
+
+# Allow crawling of all content
+User-agent: *
+Allow: /
+
+# Disallow admin and authentication pages
+Disallow: /admin/
+Disallow: /auth/
+
+# Sitemap location
+Sitemap: https://www.myhiregenix.com/sitemap.xml

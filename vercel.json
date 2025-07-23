@@ -1,0 +1,85 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "regions": ["iad1"],
+  "env": {
+    "NEXTAUTH_URL": "https://hiregenix-website.vercel.app",
+    "NEXTAUTH_SECRET": "7jRyJca64BdeNw8OWqT7tTqiJCl7aguZEeKj48LVi9M=",
+    "SMTP_HOST": "smtp-relay.brevo.com",
+    "SMTP_PORT": "587",
+    "SMTP_SECURE": "false",
+    "SMTP_USER": "8706e0001@smtp-brevo.com",
+    "SMTP_PASSWORD": "J3XD6Rk1TdKFP78b",
+    "EMAIL_FROM": "HireGenix <noreply@myhiregenix.com>",
+    "REDIS_HOST": "localhost",
+    "REDIS_PORT": "6379",
+    "REDIS_PASSWORD": ""
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0"
+        }
+      ]
+    },
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "/admin/dashboard",
+      "permanent": true
+    }
+  ],
+  "github": {
+    "silent": true,
+    "autoJobCancelation": true
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ]
+}
