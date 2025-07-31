@@ -1,0 +1,176 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model
+model User {
+  id            String    @id @default(uuid())
+  name          String?
+  email         String    @unique
+  password      String
+  emailVerified DateTime?
+  image         String?
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  posts         Post[]
+  accounts      Account[]
+  sessions      Session[]
+  media         Media[]
+}
+
+enum Role {
+  USER
+  ADMIN
+  EDITOR
+}
+
+// NextAuth models
+model Account {
+  id                String  @id @default(uuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+// Content models
+model Post {
+  id            String     @id @default(uuid())
+  title         String
+  slug          String     @unique
+  content       String     @db.Text
+  excerpt       String?
+  featuredImage String?
+  status        Status     @default(DRAFT)
+  authorId      String
+  author        User       @relation(fields: [authorId], references: [id])
+  categoryId    String?
+  category      Category?  @relation(fields: [categoryId], references: [id])
+  tags          Tag[]
+  seo           Json?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@index([authorId])
+  @@index([categoryId])
+}
+
+enum Status {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique
+  posts     Post[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Tag {
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique
+  posts     Post[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Media model
+model Media {
+  id          String   @id @default(uuid())
+  name        String
+  fileName    String
+  fileType    String
+  fileSize    Int
+  url         String
+  alt         String?
+  authorId    String?
+  author      User?    @relation(fields: [authorId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([authorId])
+}
+
+// Payment models
+model paymentGateway {
+  id          String   @id @default(uuid())
+  name        String
+  enabled     Boolean  @default(false)
+  testMode    Boolean  @default(true)
+  config      Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Analytics model
+model analyticsConfig {
+  id                  String   @id @default(uuid())
+  googleAnalyticsId   String?
+  googleTagManagerId  String?
+  facebookPixelId     String?
+  linkedInInsightTag  String?
+  enableEcommerce     Boolean  @default(false)
+  enableUserTracking  Boolean  @default(true)
+  enableDemographics  Boolean  @default(true)
+  customDimensions    Json?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+// SEO settings model
+model seoSettings {
+  id                  String   @id @default(uuid())
+  defaultTitle        String?
+  defaultDescription  String?
+  defaultKeywords     String?
+  defaultOgImage      String?
+  robotsTxt           String?  @db.Text
+  sitemapEnabled      Boolean  @default(true)
+  structuredData      Json?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
