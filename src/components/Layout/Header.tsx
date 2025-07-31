@@ -59,6 +59,7 @@ function HideOnScroll(props: HideOnScrollProps) {
 const pages = [
   { name: 'Home', href: '/' },
   { name: 'Solutions', href: '/solutions' },
+  { name: 'Demo', href: '/demo' },
   { name: 'Pricing', href: '/pricing' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
