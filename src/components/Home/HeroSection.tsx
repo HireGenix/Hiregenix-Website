@@ -84,11 +84,11 @@ export const HeroSection: React.FC = () => {
     }
   ];
 
-  // Stats data - Updated for AGI capabilities
+  // Stats data - Updated for AI capabilities
   const stats = [
-    { value: '847x', label: 'Faster Processing' },
-    { value: '94%', label: 'AGI Accuracy' },
-    { value: '75%', label: 'Time Reduction' }
+    { value: '10x', label: 'Faster Processing' },
+    { value: '85%', label: 'Match Accuracy' },
+    { value: '60%', label: 'Time Reduction' }
   ];
 
   return (
@@ -186,7 +186,7 @@ export const HeroSection: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Chip
-                label="AGI-ENHANCED RECRUITMENT PLATFORM"
+                label="ADVANCED AI RECRUITMENT PLATFORM"
                 sx={{
                   mb: 3,
                   py: 2,
@@ -221,7 +221,7 @@ export const HeroSection: React.FC = () => {
                   letterSpacing: '-0.02em'
                 }}
               >
-                Experience <Box component="span" sx={{ color: theme.palette.primary.main, WebkitTextFillColor: theme.palette.primary.main }}>AGI-Powered</Box> Recruitment
+                Experience <Box component="span" sx={{ color: theme.palette.primary.main, WebkitTextFillColor: theme.palette.primary.main }}>AI-Powered</Box> Recruitment
               </Typography>
             </motion.div>
             
@@ -242,7 +242,7 @@ export const HeroSection: React.FC = () => {
                   lineHeight: 1.6
                 }}
               >
-                HireGenix's AGI-enhanced platform features quantum processing, real-time market intelligence, emotional AI analysis, and autonomous hiring workflows that revolutionize talent acquisition.
+                HireGenix&apos;s advanced AI platform features smart candidate matching, efficient data processing, comprehensive analytics, and automated workflows that streamline your talent acquisition process.
               </Typography>
             </motion.div>
 
@@ -666,7 +666,7 @@ export const HeroSection: React.FC = () => {
                         </Box>
                         <Box sx={{ flexGrow: 1 }}>
                           <Typography variant="body2" color="white">
-                            <strong>AI Assistant:</strong> I've analyzed your open positions and found 3 candidates with exceptional matches for the Senior Developer role.
+                            <strong>AI Assistant:</strong> I&apos;ve analyzed your open positions and found 3 candidates with exceptional matches for the Senior Developer role.
                           </Typography>
                         </Box>
                       </Paper>

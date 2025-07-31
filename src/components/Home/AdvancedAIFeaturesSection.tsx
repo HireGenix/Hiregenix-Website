@@ -30,85 +30,85 @@ import {
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-// AGI Features data
-const agiFeatures = [
+// Advanced AI Features data
+const aiFeatures = [
   {
-    title: 'AGI Reasoning Engine',
-    description: 'Advanced artificial general intelligence with 94% reasoning accuracy that autonomously analyzes candidates and predicts hiring success.',
+    title: 'Smart Candidate Analysis',
+    description: 'Advanced AI algorithms analyze resumes, skills, and experience to help recruiters identify the most suitable candidates efficiently.',
     icon: <PsychologyIcon fontSize="large" />,
     color: '#9c27b0',
     metrics: [
-      { label: 'Reasoning Accuracy', value: 94 },
-      { label: 'Decision Speed', value: 98 },
-      { label: 'Pattern Recognition', value: 96 }
+      { label: 'Match Accuracy', value: 85 },
+      { label: 'Processing Speed', value: 90 },
+      { label: 'Skill Recognition', value: 88 }
     ],
-    capabilities: ['Autonomous Decision Making', 'Predictive Analytics', 'Complex Pattern Analysis'],
-    link: '/solutions/agi-reasoning'
+    capabilities: ['Resume Analysis', 'Skill Matching', 'Experience Evaluation'],
+    link: '/solutions/candidate-analysis'
   },
   {
-    title: 'Quantum Processing',
-    description: 'Quantum-enhanced algorithms deliver 847x faster processing, analyzing 15,742 parallel assessments with unprecedented accuracy.',
+    title: 'Efficient Data Processing',
+    description: 'Optimized algorithms ensure fast and reliable processing of candidate data and assessment results for quick hiring decisions.',
     icon: <ScienceIcon fontSize="large" />,
     color: '#00bcd4',
     metrics: [
-      { label: 'Processing Speed', value: 99 },
-      { label: 'Parallel Analysis', value: 97 },
-      { label: 'Quantum Advantage', value: 95 }
+      { label: 'Processing Speed', value: 92 },
+      { label: 'Data Accuracy', value: 95 },
+      { label: 'System Reliability', value: 98 }
     ],
-    capabilities: ['2.3ms Processing Speed', '15,742 Parallel Analyses', '99.6% Pattern Accuracy'],
-    link: '/solutions/quantum-processing'
+    capabilities: ['Fast Processing', 'Reliable Results', 'Scalable Performance'],
+    link: '/solutions/data-processing'
   },
   {
-    title: 'Emotional Intelligence AI',
-    description: 'Sophisticated emotional analysis engine that evaluates empathy, communication, and cultural fit with 92% accuracy.',
+    title: 'Communication Assessment',
+    description: 'AI-assisted evaluation tools help assess candidate communication skills and team fit during video interviews.',
     icon: <EmojiEmotionsIcon fontSize="large" />,
     color: '#ff9800',
     metrics: [
-      { label: 'Empathy Analysis', value: 92 },
-      { label: 'Communication Assessment', value: 89 },
-      { label: 'Cultural Fit', value: 91 }
+      { label: 'Communication Score', value: 80 },
+      { label: 'Assessment Tools', value: 85 },
+      { label: 'Interview Insights', value: 82 }
     ],
-    capabilities: ['Team Dynamics Analysis', 'Cultural Compatibility', 'Leadership Potential'],
-    link: '/solutions/emotional-intelligence'
+    capabilities: ['Interview Analysis', 'Communication Skills', 'Team Fit Assessment'],
+    link: '/solutions/communication-assessment'
   },
   {
-    title: 'Real-Time Market Intelligence',
-    description: 'Live market data analysis providing salary trends, competitor insights, and industry dynamics for strategic hiring decisions.',
+    title: 'Market Intelligence',
+    description: 'Access comprehensive market data, salary benchmarks, and hiring trends to make informed recruitment decisions.',
     icon: <TrendingUpIcon fontSize="large" />,
     color: '#2196f3',
     metrics: [
-      { label: 'Market Coverage', value: 88 },
-      { label: 'Data Accuracy', value: 95 },
-      { label: 'Trend Prediction', value: 87 }
+      { label: 'Market Coverage', value: 75 },
+      { label: 'Data Sources', value: 80 },
+      { label: 'Trend Analysis', value: 78 }
     ],
-    capabilities: ['Live Salary Data', 'Competitor Analysis', 'Industry Insights'],
+    capabilities: ['Salary Data', 'Market Trends', 'Industry Insights'],
     link: '/solutions/market-intelligence'
   },
   {
-    title: 'Autonomous Hiring Workflow',
-    description: 'Fully automated hiring pipeline from candidate sourcing to offer generation, reducing time-to-hire by 75%.',
+    title: 'Workflow Automation',
+    description: 'Streamline recruitment processes with automated scheduling, follow-ups, and status updates to improve efficiency.',
     icon: <AutoAwesomeIcon fontSize="large" />,
     color: '#4caf50',
     metrics: [
-      { label: 'Automation Level', value: 85 },
-      { label: 'Time Reduction', value: 75 },
-      { label: 'Accuracy Rate', value: 93 }
+      { label: 'Time Saved', value: 60 },
+      { label: 'Automation Rate', value: 70 },
+      { label: 'Efficiency Gain', value: 65 }
     ],
-    capabilities: ['End-to-End Automation', 'Smart Sourcing', 'Auto-Generated Offers'],
-    link: '/solutions/autonomous-hiring'
+    capabilities: ['Task Automation', 'Smart Scheduling', 'Process Optimization'],
+    link: '/solutions/workflow-automation'
   },
   {
-    title: 'Virtual Hiring Assistant',
-    description: 'Intelligent AI assistants that guide both candidates and recruiters through the entire hiring process with personalized support.',
+    title: 'Support Assistant',
+    description: 'Intelligent support tools that guide both candidates and recruiters through the hiring process with helpful assistance.',
     icon: <SpeedIcon fontSize="large" />,
     color: '#f44336',
     metrics: [
-      { label: 'User Satisfaction', value: 96 },
-      { label: 'Response Time', value: 99 },
-      { label: 'Problem Resolution', value: 91 }
+      { label: 'User Satisfaction', value: 88 },
+      { label: 'Response Quality', value: 85 },
+      { label: 'Issue Resolution', value: 82 }
     ],
-    capabilities: ['24/7 Support', 'Personalized Guidance', 'Multi-Language Support'],
-    link: '/solutions/virtual-assistant'
+    capabilities: ['User Guidance', 'Process Support', 'Help Resources'],
+    link: '/solutions/support-assistant'
   }
 ];
 
@@ -135,7 +135,7 @@ const itemVariant = {
   }
 };
 
-export const AGIFeaturesSection: React.FC = () => {
+export const AdvancedAIFeaturesSection: React.FC = () => {
   const theme = useTheme();
 
   return (
@@ -171,7 +171,7 @@ export const AGIFeaturesSection: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <Chip
-              label="🧠 AGI-POWERED CAPABILITIES"
+              label="� ADVANCED AI CAPABILITIES"
               sx={{
                 mb: 3,
                 py: 1,
@@ -206,7 +206,7 @@ export const AGIFeaturesSection: React.FC = () => {
                 lineHeight: 1.2
               }}
             >
-              Next-Generation AI Features
+              Advanced AI-Powered Features
             </Typography>
           </motion.div>
 
@@ -228,7 +228,7 @@ export const AGIFeaturesSection: React.FC = () => {
                 mb: 2
               }}
             >
-              Experience the power of Artificial General Intelligence with quantum processing, emotional analysis, and autonomous decision-making capabilities
+              Leverage advanced artificial intelligence to streamline your recruitment process with smart candidate matching, efficient data processing, and automated workflows
             </Typography>
           </motion.div>
 
@@ -247,21 +247,21 @@ export const AGIFeaturesSection: React.FC = () => {
             >
               <Chip
                 icon={<CheckCircleIcon />}
-                label="94% AGI Accuracy"
+                label="Smart AI Matching"
                 color="primary"
                 variant="outlined"
                 sx={{ fontWeight: 600 }}
               />
               <Chip
                 icon={<CheckCircleIcon />}
-                label="847x Faster Processing"
+                label="Efficient Processing"
                 color="primary"
                 variant="outlined"
                 sx={{ fontWeight: 600 }}
               />
               <Chip
                 icon={<CheckCircleIcon />}
-                label="Real-Time Intelligence"
+                label="Real-Time Insights"
                 color="primary"
                 variant="outlined"
                 sx={{ fontWeight: 600 }}
@@ -279,7 +279,7 @@ export const AGIFeaturesSection: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {agiFeatures.map((feature, index) => (
+          {aiFeatures.map((feature, index) => (
             <Grid item xs={12} md={6} lg={4} key={index}>
               <motion.div variants={itemVariant}>
                 <Card
@@ -457,10 +457,10 @@ export const AGIFeaturesSection: React.FC = () => {
             }}
           >
             <Typography variant="h4" fontWeight={700} gutterBottom>
-              Ready to Experience AGI-Powered Recruitment?
+              Ready to Experience AI-Powered Recruitment?
             </Typography>
             <Typography variant="h6" color="text.secondary" sx={{ mb: 4, maxWidth: 600, mx: 'auto' }}>
-              Join leading organizations already leveraging our AGI platform to revolutionize their hiring process
+              Join leading organizations already leveraging our advanced AI platform to streamline their hiring process
             </Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
               <Button
@@ -506,4 +506,4 @@ export const AGIFeaturesSection: React.FC = () => {
   );
 };
 
-export default AGIFeaturesSection;
+export default AdvancedAIFeaturesSection;

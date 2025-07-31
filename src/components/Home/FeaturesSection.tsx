@@ -25,49 +25,49 @@ import {
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-// Features data - Updated to reflect AGI platform capabilities
+// Features data - Realistic AAI platform capabilities
 const featuresData = [
   {
-    title: 'AGI-Enhanced Reasoning',
-    description: 'Advanced AGI technology with 94% reasoning accuracy that autonomously analyzes candidates, predicts success, and makes intelligent hiring decisions.',
+    title: 'Intelligent Candidate Matching',
+    description: 'Advanced AI algorithms analyze resumes, skills, and experience to match candidates with job requirements, helping recruiters identify the best fits more efficiently.',
     icon: <SmartToyIcon fontSize="large" />,
-    color: '#9c27b0', // purple for AGI
-    link: '/solutions/agi-recruitment'
+    color: '#9c27b0', // purple for AI
+    link: '/solutions/candidate-matching'
   },
   {
-    title: 'Real-Time Market Intelligence',
-    description: 'Live market data, salary trends, competitor analysis, and industry insights powered by quantum-enhanced processing for strategic hiring.',
+    title: 'Market Insights & Analytics',
+    description: 'Access comprehensive market data, salary benchmarks, and hiring trends to make informed recruitment decisions and stay competitive.',
     icon: <AnalyticsIcon fontSize="large" />,
     color: '#2196f3', // primary
-    link: '/solutions/market-intelligence'
+    link: '/solutions/market-insights'
   },
   {
-    title: 'Emotional Intelligence Analysis',
-    description: 'AI-powered emotional assessment analyzing empathy, communication, and cultural fit with 92% accuracy for better team dynamics.',
+    title: 'Video Interview Platform',
+    description: 'Streamlined video interviewing with AI-assisted evaluation tools that help assess communication skills and cultural fit indicators.',
     icon: <VideoCallIcon fontSize="large" />,
     color: '#ff9800', // warning/orange
-    link: '/solutions/emotional-intelligence'
+    link: '/solutions/video-interviews'
   },
   {
-    title: 'Virtual Hiring Assistant',
-    description: 'Intelligent virtual assistants guide candidates and recruiters through the entire hiring process with personalized support.',
+    title: 'Skills Assessment Tools',
+    description: 'Comprehensive testing platform with customizable assessments to evaluate technical skills, cognitive abilities, and job-specific competencies.',
     icon: <AssessmentIcon fontSize="large" />,
     color: '#4caf50', // success
-    link: '/solutions/virtual-assistant'
+    link: '/solutions/skills-assessment'
   },
   {
-    title: 'Quantum-Enhanced Processing',
-    description: 'Quantum computing algorithms deliver 847x faster processing, analyzing 15,742 parallel assessments with 99.6% pattern accuracy.',
+    title: 'Data Security & Compliance',
+    description: 'Enterprise-grade security measures and compliance tools to protect candidate data and ensure adherence to privacy regulations.',
     icon: <SecurityIcon fontSize="large" />,
-    color: '#00bcd4', // cyan for quantum
-    link: '/solutions/quantum-processing'
+    color: '#00bcd4', // cyan for security
+    link: '/solutions/security-compliance'
   },
   {
-    title: 'Autonomous Hiring Workflow',
-    description: 'Fully automated hiring pipeline from candidate sourcing to offer generation, reducing time-to-hire by 75% with AI decision-making.',
+    title: 'Workflow Automation',
+    description: 'Automate repetitive recruitment tasks like scheduling, follow-ups, and status updates to improve efficiency and candidate experience.',
     icon: <SyncIcon fontSize="large" />,
     color: '#f44336', // error/red
-    link: '/solutions/autonomous-hiring'
+    link: '/solutions/workflow-automation'
   }
 ];
 
@@ -123,7 +123,7 @@ export const FeaturesSection: React.FC = () => {
                 color: theme.palette.primary.main
               }}
             >
-              POWERFUL CAPABILITIES
+              ADVANCED CAPABILITIES
             </Typography>
           </motion.div>
           
@@ -142,7 +142,7 @@ export const FeaturesSection: React.FC = () => {
                 fontSize: { xs: '2rem', md: '2.75rem' }
               }}
             >
-              Core AGI-Enhanced Features
+              Advanced AI-Powered Features
             </Typography>
           </motion.div>
           
@@ -164,7 +164,7 @@ export const FeaturesSection: React.FC = () => {
                 mb: 6
               }}
             >
-              Our comprehensive suite of tools helps you find, assess, and hire the best talent efficiently
+              Our comprehensive recruitment platform uses advanced artificial intelligence to streamline your hiring process and help you find the right talent faster
             </Typography>
           </motion.div>
           
@@ -189,7 +189,7 @@ export const FeaturesSection: React.FC = () => {
                   color="primary"
                   sx={{ fontWeight: 600 }}
                 >
-                  All-in-One Platform
+                  Smart Recruitment Platform
                 </Typography>
               </Box>
             </Divider>

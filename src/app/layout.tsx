@@ -11,9 +11,9 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.myhiregenix.com'),
-  title: 'HireGenix - AGI-Powered Recruitment Platform | Next-Gen AI Hiring',
-  description: 'Experience the future of recruitment with HireGenix\'s AGI-enhanced platform. Featuring quantum processing, real-time market intelligence, emotional AI analysis, and autonomous hiring capabilities.',
-  keywords: 'AGI recruitment, AI hiring platform, quantum-enhanced hiring, emotional intelligence analysis, autonomous recruitment, real-time market intelligence, virtual hiring assistant, HireGenix, recruitment software, candidate matching, video interviews, skills assessment',
+  title: 'HireGenix - Advanced AI Recruitment Platform | Smart Hiring Solutions',
+  description: 'Transform your recruitment process with HireGenix\'s advanced AI platform. Featuring smart candidate matching, efficient data processing, comprehensive analytics, and automated workflows.',
+  keywords: 'AI recruitment, smart hiring platform, candidate matching, automated workflows, recruitment software, video interviews, skills assessment, HireGenix, talent acquisition, HR technology',
   icons: {
     icon: '/favicon.ico',
     apple: '/favicon.ico',
@@ -24,21 +24,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://www.myhiregenix.com',
     siteName: 'HireGenix',
-    title: 'HireGenix - AGI-Powered Recruitment Platform',
-    description: 'Experience the future of recruitment with HireGenix\'s AGI-enhanced platform. Featuring quantum processing, real-time market intelligence, emotional AI analysis, and autonomous hiring capabilities.',
+    title: 'HireGenix - Advanced AI Recruitment Platform',
+    description: 'Transform your recruitment process with HireGenix\'s advanced AI platform. Featuring smart candidate matching, efficient data processing, comprehensive analytics, and automated workflows.',
     images: [
       {
         url: '/favicon.ico',
         width: 1200,
         height: 630,
-        alt: 'HireGenix - AGI-Powered Recruitment Platform',
+        alt: 'HireGenix - Advanced AI Recruitment Platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'HireGenix - AGI-Powered Recruitment Platform',
-    description: 'Experience the future of recruitment with HireGenix\'s AGI-enhanced platform.',
+    title: 'HireGenix - Advanced AI Recruitment Platform',
+    description: 'Transform your recruitment process with HireGenix\'s advanced AI platform.',
     images: ['/favicon.ico'],
     creator: '@HireGenix',
   },

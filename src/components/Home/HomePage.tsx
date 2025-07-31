@@ -15,7 +15,7 @@ import {
   DashboardPreviewSection,
   StatsSection,
   FeaturesSection,
-  AGIFeaturesSection,
+    AdvancedAIFeaturesSection,
   AITechnologyExplainerSection,
   SuccessStoriesSection,
   ROICalculatorSection,
@@ -121,8 +121,8 @@ export default function HomePage() {
         {/* Features Section */}
         <FeaturesSection />
 
-        {/* AGI Features Section */}
-        <AGIFeaturesSection />
+        {/* Advanced AI Features Section */}
+        <AdvancedAIFeaturesSection />
 
         {/* AI Technology Explainer Section */}
         <AITechnologyExplainerSection />

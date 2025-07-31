@@ -3,7 +3,7 @@ export * from './DashboardPreview';
 export * from './InterviewAnalysisPreview';
 export * from './SkillsAssessmentPreview';
 export * from './HeroSection';
-export * from './AGIFeaturesSection';
+export * from './AdvancedAIFeaturesSection';
 export * from './TrustedCompaniesSection';
 export * from './DashboardPreviewSection';
 export * from './KeyBenefitsSection';
